@@ -6,6 +6,6 @@ class Home extends Base
 {
     public function get()
     {
-        $this->renderView(__DIR__ . '/../views/Home.php', ['title' => 'HOME TITLE']);
+        $this->renderView(dirname(__DIR__, 1) . '/Views/Home.php', ['title' => 'HOME TITLE']);
     }
 }

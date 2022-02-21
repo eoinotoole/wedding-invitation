@@ -5,5 +5,6 @@ RUN  apt-get update -y && \
      apt-get -y autoremove && \
      apt-get clean
 RUN apt-get install -y zip \
-    unzip
+    unzip \
+    vim
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer

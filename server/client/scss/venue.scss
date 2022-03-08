@@ -1,0 +1,44 @@
+.venue {
+  position: relative;
+  padding: $section-spacing 0;
+  background-color: $bg-grey;
+  text-align: center;
+}
+
+.venue__leaves-1 {
+  position: absolute;
+  top: -38%;
+  left: 0;
+  width: 180px;
+  max-width: 330px;
+
+  @include tablet-portrait {
+    top: -40%;
+    width: 29%;
+  }
+
+  @include tablet-landscape {
+    top: -50%;
+  }
+
+  @include desktop {
+    top: -54%;
+    width: 35%;
+  }
+}
+
+.venue__leaves-2 {
+  position: absolute;
+  bottom: -32%;
+  right: 0;
+  width: 180px;
+  max-width: 320px;
+
+  @include tablet-portrait {
+    width: 28%;
+  }
+
+  @include tablet-landscape {
+    bottom: -38%;
+  }
+}

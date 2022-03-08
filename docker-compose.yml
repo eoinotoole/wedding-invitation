@@ -4,4 +4,4 @@ services:
     ports:
       - 3000:80
     volumes:
-      - ./html/:/var/www/html
+      - ./server/:/var/www/html

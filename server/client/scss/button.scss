@@ -1,0 +1,14 @@
+.button {
+  background-color: transparent;
+  border: 1px solid #000;
+  font-size: inherit;
+  font-family: inherit;
+  letter-spacing: $body-letter-spacing;
+  cursor: pointer;
+}
+
+.button--lg {
+  padding: 1.3rem 0;
+  min-width: 16rem;
+  background-color: #ece8d6;
+}

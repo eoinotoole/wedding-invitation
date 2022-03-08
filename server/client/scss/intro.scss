@@ -1,0 +1,92 @@
+.intro {
+  position: relative;
+  padding: $section-spacing 0;
+  margin: 0 auto;
+  text-align: center;
+  background-color: $white;
+}
+
+.intro__content {
+  margin: 4.5rem 0 3rem;
+  font-size: 100%;
+
+  @include tablet-landscape {
+    font-size: 110%;
+  }
+
+  @include desktop {
+    font-size: 120%;
+  }
+}
+
+.intro__small {
+  font-size: 1em;
+}
+
+.intro__large {
+  font-size: 4em;
+  line-height: 1.3;
+  margin: 2.5rem 0;
+}
+
+.intro__info {
+  font-size: 1em;
+}
+
+.intro-info__date {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 1.39em;
+}
+
+.intro-info__venue {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 1.39em;
+}
+
+.intro-info__town {
+  display: block;
+  font-size: 1em;
+}
+
+.intro__button {
+  margin-top: 1.4rem;
+}
+
+.intro__leaves {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 250px;
+  max-width: 460px;
+
+  @include tablet-portrait {
+    width: 40%;
+  }
+
+  @include large-desktop {
+    max-width: 520px;
+  }
+}
+
+.intro__leaves-2 {
+  position: absolute;
+  bottom: -7%;
+  left: 0;
+  width: 190px;
+  max-width: 360px;
+
+  @include tablet-portrait {
+    width: 33%;
+  }
+
+  @include tablet-landscape {
+    width: 35%;
+    bottom: -10%;
+  }
+
+  @include large-desktop {
+    max-width: 420px;
+  }
+}

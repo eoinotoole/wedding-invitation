@@ -1,4 +1,4 @@
-FROM php:8.0-apache
+FROM php:8.0-apache AS php
 RUN a2enmod rewrite
 RUN  apt-get update -y && \
      apt-get upgrade -y && \
@@ -6,5 +6,12 @@ RUN  apt-get update -y && \
      apt-get clean
 RUN apt-get install -y zip \
     unzip \
-    vim
+    vim \
+    nodejs \
+    npm
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+WORKDIR /var/www/html
+COPY ./server .
+WORKDIR client
+RUN npm i && npm run-script build

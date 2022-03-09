@@ -1,4 +1,10 @@
-<?php require_once __DIR__ . '/includes/header.php'; ?>
+<?php
+
+include __DIR__ . '/utils/location-links.php';
+require_once __DIR__ . '/includes/header.php';
+
+?>
+
 <div class="page">
     <main>
         <section class="intro">
@@ -98,22 +104,36 @@
         <section class="travel">
             <div class="container">
                 <h3 class="heading">Travel</h3>
-                <h4>Overseas:</h4>
-                <p>Nearest airport is Shannon; 1hour drive to Ashley Park House</p>
-                <p>Dublin airport: 1hr50mins drive</p>
-                <p>Nenagh (nearest town) 10 min drive</p>
-                <p>Limerick (nearest city); 35 min drive</p>
+                <h5>Overseas</h5>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+            </div>
+            <div class="travel__locations travel__grey-wrap">
+                <div class="container container--lg">
+                    <ul class="travel-list">
+                        <li class="travel-list__item">Shannon (nearest airport) <br />1 hour drive to Ashley Park House<a class="travel-list__link" href="<?php echo LOCATION_SHANNON; ?>" target="_blank">See map</a></li>
+                        <li class="travel-list__item">Dublin airport <br /> 1 hour 50 mins drive<a class="travel-list__link" href="<?php echo LOCATION_DUBLIN; ?>" target="_blank">See map</a></li>
+                        <li class="travel-list__item">Nenagh (nearest town) <br /> 10 min drive<a class="travel-list__link" href="<?php echo LOCATION_NENAGH; ?>" target="_blank">See map</a></li>
+                        <li class="travel-list__item">Limerick (nearest city) <br /> 35 min drive<a class="travel-list__link" href="<?php echo LOCATION_LIMERICK; ?>" target="_blank">See map</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container">
                 <p>If you are travelling to Ireland on Saturday, we recommend staying in Limerick on the Saturday night.
                     There are numerous hotels, restaurants to enjoy a nice meal out on Sat night, and a multitude of hairdressers
                     and beauty parlour for those who want to “glam up” the morning of the Big Day.</p>
                 <p>A taxi can be arranged by your hotel to get from Limerick to the venue (approx. cost of €x)</p>
-                <h4>Taxi numbers:</h4>
-                <p>All route taxis +353 61 311111</p>
-                <p>Fixed price taxis +353 61 313131</p>
-                <p>Shannon airport taxis: +353 61 332266</p>
-                <h4>Driving:</h4>
             </div>
-        </section>
-    </main>
+            <div class="travel__taxis travel__grey-wrap">
+                <div class="container container--lg">
+                    <ul class="travel-list">
+                        <li class="travel-list__item">All route taxis <br />+353 61 311111<a class="travel-list__link" href="" target="_blank">Call</a></li>
+                        <li class="travel-list__item">Fixed price taxis <br />+353 61 313131<a class="travel-list__link" href="" target="_blank">Call</a></li>
+                        <li class="travel-list__item">Shannon airport taxis <br /> +353 61 332266<a class="travel-list__link" href="" target="_blank">Call</a></li>
+                    </ul>
+                </div>
+            </div>
+</div>
+</section>
+</main>
 </div>
 <?php require_once __DIR__ . '/includes/footer.php';

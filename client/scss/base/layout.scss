@@ -13,6 +13,10 @@ body {
   padding: 0 1rem;
 }
 
+.container--lg {
+  max-width: 1200px;
+}
+
 .bg-grey {
   background-color: $bg-grey;
 }

@@ -22,10 +22,15 @@
   }
 }
 
+.schedule-date__date {
+  margin-bottom: 2rem;
+}
+
 .schedule-date:first-of-type .schedule-date__date {
   position: relative;
 
   @include tablet-landscape {
+    margin: 0;
     &:after {
       content: "";
       position: absolute;

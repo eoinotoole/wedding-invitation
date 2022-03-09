@@ -9,9 +9,12 @@ RUN apt-get install -y zip \
     vim \
     nodejs \
     npm
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 WORKDIR /var/www/html
-COPY ./server .
+COPY . .
+RUN composer install
+
 WORKDIR client
 RUN npm i && npm run-script build
+WORKDIR /var/www/html

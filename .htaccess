@@ -11,4 +11,5 @@
     <FilesMatch ".(ico|pdf|flv|jpg|jpeg|png|gif|svg|js|css|swf|woff2|woff)$">
         Header set Cache-Control "max-age=31536000, public"
     </FilesMatch>
+        Header set Content-Security-Policy "default-src 'self'; font-src 'self' https://fonts.googleapis.com/ https://fonts.gstatic.com/; style-src 'self' https://fonts.googleapis.com/; script-src 'self'"
 </IfModule>

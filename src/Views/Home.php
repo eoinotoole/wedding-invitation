@@ -17,8 +17,8 @@ require_once __DIR__ . '/includes/header.php';
     </div> -->
     <main>
         <section class="intro">
-            <img class="intro__leaves" src="/static/images/leaves1.svg" />
-            <img class="intro__leaves-2" src="/static/images/leaves2.svg" />
+            <img class="intro__leaves" src="/static/images/leaves1.svg" alt="Hanging leaves illustration" />
+            <img class="intro__leaves-2" src="/static/images/leaves2.svg" alt="Hanging leaves illustration" />
             <div class="container">
                 <div class="intro__content">
                     <h5 class="intro__small">The wedding of</h5>
@@ -85,7 +85,7 @@ require_once __DIR__ . '/includes/header.php';
 
         <section class="accommodation">
             <div class="container">
-                <img class="accommodation__leaves" src="/static/images/leaves5.svg" />
+                <img class="accommodation__leaves" src="/static/images/leaves5.svg" width="140" height="79" alt="Leaves illustration" />
                 <h3 class="heading">Accommodation</h3>
                 <p>All wedding guests have a room reserved for the night of the wedding.
                     If a room is not required, please let us know asap.</p>
@@ -100,8 +100,8 @@ require_once __DIR__ . '/includes/header.php';
         </section>
 
         <section class="venue">
-            <img class="venue__leaves-1" src="/static/images/leaves3.svg" />
-            <img class="venue__leaves-2" src="/static/images/leaves4.svg" />
+            <img class="venue__leaves-1" src="/static/images/leaves3.svg" alt="Hanging leaves illustration" />
+            <img class="venue__leaves-2" src="/static/images/leaves4.svg" alt="Hanging leaves illustration" />
             <div class="container">
                 <h3 class="heading">About the venue</h3>
                 <p>See website:

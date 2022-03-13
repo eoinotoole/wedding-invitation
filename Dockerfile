@@ -1,5 +1,6 @@
 FROM php:8.0-apache AS php
 RUN a2enmod rewrite
+RUN a2enmod headers
 RUN  apt-get update -y && \
      apt-get upgrade -y && \
      apt-get -y autoremove && \

@@ -6,6 +6,15 @@ require_once __DIR__ . '/includes/header.php';
 ?>
 
 <div class="page">
+    <!-- <button class="menu-button">Menu</button>
+    <div class="menu">
+        <menu class="menu-list">
+            <li class="menu-list__item"><button class="menu-list__button">order of the day</button></li>
+            <li class="menu-list__item"><button class="menu-list__button">accommodation</button></li>
+            <li class="menu-list__item"><button class="menu-list__button">venue</button></li>
+            <li class="menu-list__item"><button class="menu-list__button">travel</button></li>
+        </menu>
+    </div> -->
     <main>
         <section class="intro">
             <img class="intro__leaves" src="/static/images/leaves1.svg" />
@@ -19,7 +28,7 @@ require_once __DIR__ . '/includes/header.php';
                         <span class="intro-info__venue">Ashley Park House</span>
                         <span class="intro-info__town">Nenagh, Co. Tipperary</span>
                     </h2>
-                    <button class="intro__button button button--lg">RSVP</button>
+                    <button class="intro__button button button--lg button--rsvp-trigger">RSVP</button>
                 </div>
             </div>
         </section>
@@ -104,8 +113,10 @@ require_once __DIR__ . '/includes/header.php';
         <section class="travel">
             <div class="container">
                 <h3 class="heading">Travel</h3>
-                <h5>Overseas</h5>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                <div class="travel-info">
+                    <h5 class="travel-info__heading">Overseas</h5>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                </div>
             </div>
             <div class="travel__locations travel__grey-wrap">
                 <div class="container container--lg">
@@ -126,9 +137,9 @@ require_once __DIR__ . '/includes/header.php';
             <div class="travel__taxis travel__grey-wrap">
                 <div class="container container--lg">
                     <ul class="travel-list">
-                        <li class="travel-list__item">All route taxis <br />+353 61 311111<a class="travel-list__link" href="" target="_blank">Call</a></li>
-                        <li class="travel-list__item">Fixed price taxis <br />+353 61 313131<a class="travel-list__link" href="" target="_blank">Call</a></li>
-                        <li class="travel-list__item">Shannon airport taxis <br /> +353 61 332266<a class="travel-list__link" href="" target="_blank">Call</a></li>
+                        <li class="travel-list__item">All route taxis <br />+353 61 311111<a class="travel-list__link" href="+353 61 311111">Call</a></li>
+                        <li class="travel-list__item">Fixed price taxis <br />+353 61 313131<a class="travel-list__link" href="+353 61 313131">Call</a></li>
+                        <li class="travel-list__item">Shannon airport taxis <br /> +353 61 332266<a class="travel-list__link" href=" +353 61 332266">Call</a></li>
                     </ul>
                 </div>
             </div>

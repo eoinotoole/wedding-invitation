@@ -1,7 +1,7 @@
+import { enableModal, getModal } from "./modal";
 import { stateOneMarkup } from "./utils/rsvp-markup";
 
 const triggerButtons = document.querySelectorAll(".button--rsvp-trigger");
-const page = document.querySelector(".page");
 
 let formState = {
   stage: 0,
@@ -26,31 +26,36 @@ let formState = {
   },
 };
 
-const FORM_STRING = `<div class="modal">
+const FORM_STRING = `
     <div class="rsvp">
         <h3 class="rsvp__heading">Celebrate with us</h3>
         <p>Fill in the form below to RSVP</p>
         <p>(Please respond before 07/07/2022)</p>
         <form  class="rsvp-form">
-            ${stateOneMarkup}
+            <div class="rsvp-form__content">
+              ${stateOneMarkup}
+            </div>
             <button class="button rsvp-form__button">Next</button>
         </form>
-    </div>
-</div>`;
+    </div>`;
 
 triggerButtons.forEach((button) =>
   button.addEventListener("click", handleTriggerButtonClick)
 );
 
 function handleTriggerButtonClick(e) {
-  addFormToDOM();
+  enableModal();
+  addFormToModal();
   updateFormState({ stage: 1 });
   addInputListeners();
   addActionButtonListener();
 }
 
-function addFormToDOM() {
-  page.innerHTML += FORM_STRING;
+function addFormToModal() {
+  const modal = getModal();
+  if (!modal) return;
+
+  modal.innerHTML = FORM_STRING;
 }
 
 function addActionButtonListener() {

@@ -1,12 +1,22 @@
 .rsvp {
-  width: 600px;
+  max-width: 600px;
+  max-height: 100%;
+  overflow-y: scroll;
   background: #fff;
-  padding: 2rem 2.3rem;
+  padding: 2rem 1.3rem;
   text-align: center;
   cursor: default;
 
   p {
     margin-bottom: 0.5rem;
+  }
+
+  @include tablet-portrait {
+    padding: 2rem;
+  }
+
+  @include tablet-landscape {
+    width: 600px;
   }
 }
 
@@ -14,8 +24,8 @@
   margin-bottom: 0.2rem;
 }
 
-// .rsvp-form {
-//   margin-top: 2rem;
+// .rsvp-form__content {
+
 // }
 
 .rsvp-form__separation-wrap {
@@ -29,6 +39,11 @@
 
 .rsvp-form__checkers {
   display: flex;
+  flex-direction: column;
+
+  @include tablet-landscape {
+    flex-direction: row;
+  }
 }
 
 .rsvp-form__checker {
@@ -40,7 +55,11 @@
   }
 
   &:first-child {
-    margin-right: 1rem;
+    margin-bottom: 0.6rem;
+
+    @include tablet-landscape {
+      margin: 0 1rem 0 0;
+    }
   }
 }
 
@@ -53,7 +72,8 @@
 }
 
 .rsvp-form__button {
-  width: 50%;
+  width: 280px;
+  max-width: 100%;
   padding: 1rem;
   margin-top: 1rem;
   background-color: #ece8d6;

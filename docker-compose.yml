@@ -3,5 +3,6 @@ services:
     build: .
     ports:
       - 3000:80
-    # volumes:
-    #   - .:/var/www/html
+    volumes:
+      - ./src/:/var/www/html/src
+      - ./client/src/:/var/www/html/client/src

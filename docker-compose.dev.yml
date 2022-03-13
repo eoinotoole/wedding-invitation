@@ -1,0 +1,9 @@
+services:
+  php-apache:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./src/:/var/www/html/src
+      - ./client/:/var/www/html/client/
+      - ./static/:/var/www/html/static/

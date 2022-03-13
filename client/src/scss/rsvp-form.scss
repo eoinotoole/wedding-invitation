@@ -79,3 +79,10 @@
   background-color: #ece8d6;
   text-transform: uppercase;
 }
+
+.rsvp-form__validation-error {
+  display: block;
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  color: $error-red;
+}

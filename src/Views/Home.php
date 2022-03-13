@@ -137,9 +137,9 @@ require_once __DIR__ . '/includes/header.php';
             <div class="travel__taxis travel__grey-wrap">
                 <div class="container container--lg">
                     <ul class="travel-list">
-                        <li class="travel-list__item">All route taxis <br />+353 61 311111<a class="travel-list__link" href="+353 61 311111">Call</a></li>
-                        <li class="travel-list__item">Fixed price taxis <br />+353 61 313131<a class="travel-list__link" href="+353 61 313131">Call</a></li>
-                        <li class="travel-list__item">Shannon airport taxis <br /> +353 61 332266<a class="travel-list__link" href=" +353 61 332266">Call</a></li>
+                        <li class="travel-list__item">All route taxis <br />+353 61 311111<a class="travel-list__link" href="tel:353 61 311111">Call</a></li>
+                        <li class="travel-list__item">Fixed price taxis <br />+353 61 313131<a class="travel-list__link" href="tel:+353 61 313131">Call</a></li>
+                        <li class="travel-list__item">Shannon airport taxis <br /> +353 61 332266<a class="travel-list__link" href="tel:+353 61 332266">Call</a></li>
                     </ul>
                 </div>
             </div>

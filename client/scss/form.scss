@@ -1,0 +1,35 @@
+form {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    margin-bottom: 0.2rem;
+  }
+}
+
+input,
+textarea {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 0.75rem 0.75rem 0;
+  border-bottom: 1px solid #eee;
+  color: #000;
+
+  &::placeholder {
+    // color: #737272;
+  }
+}
+
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+/*Change text in autofill textbox*/
+input:-webkit-autofill {
+  -webkit-text-fill-color: inherit !important;
+}

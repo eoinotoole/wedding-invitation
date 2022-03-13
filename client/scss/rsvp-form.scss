@@ -1,0 +1,61 @@
+.rsvp {
+  width: 600px;
+  background: #fff;
+  padding: 2rem 2.3rem;
+  text-align: center;
+  cursor: default;
+
+  p {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.rsvp__heading {
+  margin-bottom: 0.2rem;
+}
+
+// .rsvp-form {
+//   margin-top: 2rem;
+// }
+
+.rsvp-form__separation-wrap {
+  margin: 2.5rem 0;
+}
+
+.rsvp-form__element {
+  margin-bottom: 1.2rem;
+  text-align: left;
+}
+
+.rsvp-form__checkers {
+  display: flex;
+}
+
+.rsvp-form__checker {
+  display: flex;
+  align-items: center;
+
+  label {
+    cursor: pointer;
+  }
+
+  &:first-child {
+    margin-right: 1rem;
+  }
+}
+
+.rsvp-form__radio {
+  display: inline-block;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin: 0 0.5rem -0.25rem 0;
+  cursor: pointer;
+}
+
+.rsvp-form__button {
+  width: 50%;
+  padding: 1rem;
+  margin-top: 1rem;
+  background-color: #ece8d6;
+  text-transform: uppercase;
+}

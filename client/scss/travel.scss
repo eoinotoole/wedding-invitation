@@ -4,6 +4,10 @@
   text-align: center;
 }
 
+.travel-info {
+  margin: 3rem 0;
+}
+
 .travel__grey-wrap {
   background-color: $bg-grey;
   padding: 3rem 0;
@@ -42,7 +46,7 @@
 }
 
 .travel__locations {
-  margin: 4rem 0;
+  margin-bottom: 4rem;
 }
 
 .travel__taxis {

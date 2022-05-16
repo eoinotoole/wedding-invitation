@@ -4,7 +4,7 @@ namespace App\Http;
 
 class Request
 {
-    private const DEFAULT_PATH = 'home';
+    public const DEFAULT_PATH = 'home';
 
     private const API_PATH = 'api/';
 
@@ -64,14 +64,5 @@ class Request
     public function getHost()
     {
         return $this->req['HTTP_HOST'];
-    }
-
-    public function getController()
-    {
-        $parsedPath = $this->parsedPath ?: self::DEFAULT_PATH;
-        $splitPath = $this->getSplitPath($parsedPath);
-        $controller = isset($splitPath[1]) ? ucfirst($splitPath[0]) . '\\' .
-        ucfirst($splitPath[1]) : ucfirst($parsedPath);
-        return "App\Controllers\\{$controller}";
     }
 }

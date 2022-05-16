@@ -6,6 +6,8 @@ class Home extends Base
 {
     public function get()
     {
-        $this->renderView(dirname(__DIR__, 1) . '/Views/Home.php', ['title' => 'The wedding of Maeve O\'Toole & William Pipe']);
+        $view = new \App\Views\Home();
+        $view->create(['title' => 'The wedding of William Pipe & Maeve O\'Toole']);
+        $view->render($this->req);
     }
 }

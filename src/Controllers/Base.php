@@ -4,16 +4,13 @@ namespace App\Controllers;
 
 class Base
 {
-    protected $req;
+    protected \App\Http\Request $req;
 
-    protected $res;
+    protected string $method;
 
-    protected $method;
-
-    public function __construct()
+    public function __construct(\App\Http\Request $req)
     {
-        $this->req = $GLOBALS['req'];
-        $this->res = $GLOBALS['res'];
+        $this->req = $req;
         $this->method = strtolower($this->req->getMethod());
 
         if (!method_exists($this, $this->method)) {
@@ -21,15 +18,10 @@ class Base
             return;
         }
 
-        if ($this->req->isApiPath()) {
-            $this->res->prepareResponse();
-        }
+        // if ($this->req->isApiPath()) {
+        //     $this->res->prepareResponse();
+        // }
 
         $this->{$this->method}();
-    }
-
-    protected function renderView(string $viewPath, array $data)
-    {
-        require_once $viewPath;
     }
 }

@@ -2,10 +2,8 @@
 Simple wedding invitation for M&amp;W wedding 2022
 
 ## For development
-- Uncomment volume in docker-compose.yml 🤤 - will change this soon
-- Run `docker-compose up -d` to start container
-- Manually install composer dependencies by running `composer install` in root
-- Manually install node dependencies and start webpack watcher by running `npm i && npm run-script dev` in /client
+- Run `docker-compose -f docker-compose.dev.yml up -d`
+- Run `cd client & npm run-script dev` to build static files and enable webpack watch
 
 ## For production
 - Run `docker-composer up -d`

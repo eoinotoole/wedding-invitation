@@ -10,19 +10,6 @@ class Response
 
     private $output;
 
-    private const STATUS_TEXTS = [
-        // SUCCESS CODES
-        200 => 'OK',
-        // REDIRECTION CODES
-        301 => 'Moved Permanently',
-        // CLIENT ERROR
-        400 => 'Bad Request',
-        401 => 'Unauthorized',
-        404 => 'Not Found',
-        // SERVER ERROR
-        500 => 'Internal Server Error',
-    ];
-
     public function __construct(Request $req)
     {
         $this->req = $req;
@@ -45,25 +32,12 @@ class Response
         $this->output = $data;
     }
 
-    public function prepareResponse(): void
-    {
-        $this->setHeader('Access-Control-Allow-Origin: *');
-        $this->setHeader("Access-Control-Allow-Methods: GET, POST");
-        $this->setHeader('Content-Type: application/json; charset=UTF-8');
-    }
-
-    public function getStatusCodeText(int $code): string
-    {
-        return (string) isset($this->statusTexts[$code]) ? $this->statusTexts[$code] : 'unknown status';
-    }
-
-    public function sendStatus($code)
-    {
-        $this->setHeader(sprintf('HTTP/1.1 ' . $code . ' %s', $this->getStatusCodeText($code)));
-    }
-
     public function send(): void
     {
+        foreach ($this->headers as $header) {
+            header($header);
+        }
+
         echo $this->output;
     }
 }

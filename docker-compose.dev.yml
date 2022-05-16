@@ -3,7 +3,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
+    ports:
+      - 3000:80
     volumes:
+      - ./index.php:/var/www/html/index.php
       - ./src/:/var/www/html/src
       - ./client/:/var/www/html/client/
       - ./static/:/var/www/html/static/

@@ -4,6 +4,7 @@ class MenuForm extends RsvpForm {
   bindClickOnSubmitButton(handler) {
     this._getActionButton().addEventListener("click", (e) => {
       e.preventDefault();
+      this._clearValidationErrors();
       this._validateFields();
       if (this._getHasValidationErrors()) return;
       this._handleActionButtonClick();

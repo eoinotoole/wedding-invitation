@@ -1,6 +1,13 @@
 import RsvpForm from "./RsvpForm";
 
 class GuestsForm extends RsvpForm {
+  bindClickOnSubmitButton(handler) {
+    this._getActionButton().addEventListener("click", (e) => {
+      e.preventDefault();
+      handler(undefined, true);
+    });
+  }
+
   bindClickOnStartSelection(handler) {
     const form = this._getForm();
     const startSelectionButtons = Array.from(
@@ -45,7 +52,6 @@ class GuestsForm extends RsvpForm {
 
     if (hasMadeSelection)
       return `<li class="rsvp-form-guest-actions__item"><span>Selection complete</span></li><li><button class="rsvp-form--guest-actions__selection" data-guest="${guestName}">Edit choices</button></li>`;
-
     return `<li class="rsvp-form-guest-actions__item"><button class="rsvp-form--guest-actions__selection" data-guest="${guestName}">Choose dishes</button></li>`;
   }
 
@@ -61,10 +67,23 @@ class GuestsForm extends RsvpForm {
                 ${formContent}
             </div>
             <div class="rsvp-form-button-container">
-                <button class="button rsvp-form__button" disabled>Submit</button>
+                ${this._getSubmitButton()}
             </div>
         </form>
     </div>`;
+  }
+
+  _getSubmitButton() {
+    const guests = this._answers.getGuests();
+    const isSelectionProcessDone = guests.reduce((final, current) => {
+      let isDone = final;
+      if (!Boolean(current.getMenu())) isDone = false;
+      return isDone;
+    }, true);
+
+    return isSelectionProcessDone
+      ? '<button class="button rsvp-form__button">Submit</button>'
+      : '<button class="button rsvp-form__button" disabled>Submit</button>';
   }
 }
 

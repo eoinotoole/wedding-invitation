@@ -51,8 +51,17 @@ class Rsvp {
     this._nextStage();
   }
 
-  handleActionButtonClick(stageNumber) {
+  handleActionButtonClick(stageNumber, isSubmission) {
+    if (isSubmission) {
+      this._handleSubmission();
+      return;
+    }
+
     this._nextStage(stageNumber);
+  }
+
+  _handleSubmission() {
+    console.log(this.answers);
   }
 
   _nextStage(stageNumber) {

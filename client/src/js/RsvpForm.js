@@ -25,6 +25,7 @@ class RsvpForm {
   bindClickOnSubmitButton(handler) {
     this._getActionButton().addEventListener("click", (e) => {
       e.preventDefault();
+      this._clearValidationErrors();
       this._validateFields();
       if (this._getHasValidationErrors()) return;
       this._handleActionButtonClick();
@@ -34,6 +35,13 @@ class RsvpForm {
 
   _addEventListeners() {
     const form = this._getForm();
+    const inputs = Array.from(form.querySelectorAll("input"));
+    const textAreas = Array.from(form.querySelectorAll("textarea"));
+    const combinedInputs = [...inputs, ...textAreas];
+
+    combinedInputs.forEach((input) =>
+      input.addEventListener("focus", this._handleFocusOnInput.bind(this))
+    );
     form.addEventListener("submit", (e) => e.preventDefault());
   }
 
@@ -89,7 +97,7 @@ class RsvpForm {
             ${this._getHeadingMarkup()}
             ${this._getSubHeadingMarkup()}
            </div>
-            <form class="rsvp-form">
+            <form class="rsvp-form" autocomplete="off">
                 <div class="rsvp-form__content">
                   ${formContent}
                 </div>
@@ -138,14 +146,13 @@ class RsvpForm {
   _validateInputs(inputs) {
     const textInputs = inputs.filter((input) => input.type === "text");
     const emailInput = inputs.find((input) => input.type === "email");
-    const radioInputs = inputs.filter((input) => input.type === "radio");
 
     // errors already showing - must be cleared first
     if (this._getHasValidationErrors()) return;
 
     this._validateTextInputs(textInputs);
     this._validateEmailInput(emailInput);
-    this._validateRadioInputs(radioInputs);
+    this._validateRadioInputs();
   }
 
   _validateTextInputs(textInputs) {
@@ -155,6 +162,7 @@ class RsvpForm {
 
   _validateTextInput(input) {
     const { value, name } = input;
+    const validNameAttributes = ["name", "secondaryName"];
 
     if (value.length < 1) {
       this._setHasValidationErrors(true);
@@ -162,11 +170,34 @@ class RsvpForm {
       return;
     }
 
-    if (name === "name" && !this._isValidNameInput(input)) {
+    if (validNameAttributes.includes(name) && !this._isValidNameInput(input)) {
       this._setHasValidationErrors(true);
       this._displayValidationError(input, "Please input a valid name");
       return;
     }
+
+    if (
+      validNameAttributes.includes(name) &&
+      this._isDuplicateGuestInput(input)
+    ) {
+      this._setHasValidationErrors(true);
+      this._displayValidationError(
+        input,
+        "Please only insert each person once"
+      );
+    }
+  }
+
+  _isDuplicateGuestInput(input) {
+    const form = this._getForm();
+    const textInputs = Array.from(form.querySelectorAll("input"))
+      .filter(
+        (input) =>
+          (input.type === "text" && input.name === "name") ||
+          input.name === "secondaryName"
+      )
+      .filter((i) => i.value === input.value);
+    return textInputs.length > 1;
   }
 
   _isValidNameInput(input) {
@@ -178,7 +209,21 @@ class RsvpForm {
     return true;
   }
 
-  _validateRadioInputs(inputs) {}
+  _validateRadioInputs() {
+    const form = this._getForm();
+    const radioContainers = Array.from(
+      form.querySelectorAll(".rsvp-form__checkers")
+    );
+    radioContainers.forEach((container) => {
+      const inputs = Array.from(container.querySelectorAll("input"));
+      const hasSelection = inputs.some((input) => input.checked);
+      console.log(hasSelection);
+      if (!hasSelection) {
+        this._setHasValidationErrors(true);
+        this._displayValidationError(container, "This field is required");
+      }
+    });
+  }
 
   _validateEmailInput(input) {
     if (!input) return;

@@ -173,6 +173,18 @@
   top: 3px;
 }
 
+.rsvp-form-add.disabled .rsvp-form-add__content {
+  cursor: pointer;
+}
+
+.rsvp-form-add.disabled .rsvp-form__icon {
+  display: none;
+}
+
+.rsvp-form-add.disabled span {
+  padding: 0;
+}
+
 .rsvp-form-minus {
   position: relative;
 }

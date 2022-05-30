@@ -8,51 +8,27 @@ class Request
 
     private const API_PATH = 'api/';
 
-    public $req;
+    private $req;
 
-    public $parsedPath;
+    public $path = self::DEFAULT_PATH;
 
     public function __construct()
     {
         $this->req = $_SERVER;
-        $this->parsedPath = $this->getParsedPath($this->req['REQUEST_URI']);
+        $this->path = $this->req['REQUEST_URI'];
     }
 
     public function getSplitPath($path)
     {
-        return explode('/', $path);
-    }
-
-    public function getParsedPath(string $rawPath): string
-    {
-        $splitPath = $this->getSplitPath($rawPath);
-        $resourceTwo = isset($splitPath[2]) ? '/' . $splitPath[2] : '';
-        $path = "{$splitPath[1]}{$resourceTwo}";
-        return $path ?: self::DEFAULT_PATH;
+        $splitPath = explode('/', $path);
+        array_shift($splitPath);
+        return $splitPath;
     }
 
     public function shouldRedirectToHome(): bool
     {
-        $splitPath = $this->getSplitPath($this->parsedPath);
-        $isAlreadyHome = $splitPath[0] === self::DEFAULT_PATH;
-
-        if ($isAlreadyHome || $this->isApiPath()) {
-            return false;
-        }
-
-        return true;
-    }
-
-    public function isApiPath(): bool
-    {
-        $splitPath = $this->getSplitPath($this->parsedPath);
-        $resourceOne =  $splitPath[0] ?? '';
-        $resourceTwo = $splitPath[1] ?? '';
-
-        if ($resourceOne === self::API_PATH || strlen($resourceTwo) >= 1) {
-            return true;
-        }
-
+        $isHomePath = $this->getSplitPath($this->path)[0] === self::DEFAULT_PATH;
+        if ($isHomePath) return true;
         return false;
     }
 

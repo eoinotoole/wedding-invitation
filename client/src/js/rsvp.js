@@ -1,199 +1,51 @@
-import { enableModal, getModal } from "./modal";
-import { stateOneMarkup } from "./utils/rsvp-markup";
+import Answers from "./Answers";
+import InitForm from "./InitForm";
+import GuestsForm from "./GuestsForm";
+import MenuForm from "./MenuForm";
+import EntreesForm from "./EntreesForm";
+import MainsForm from "./MainsForm";
+import DessertsForm from "./DessertsForm";
 
-const triggerButtons = document.querySelectorAll(".button--rsvp-trigger");
-
-let formState = {
-  stage: 0,
-  failedValidation: false,
-  name: "",
-  email: "",
-  attend: null,
-  comments: "",
-  attendeesNum: 0,
-  requiresAccomodation: null,
-  guestFood1: {
-    starter: null,
-    main: null,
-    dessert: null,
-    dietaryRequirements: "",
-  },
-  guestFood2: {
-    starter: null,
-    main: null,
-    dessert: null,
-    dietaryRequirements: "",
-  },
+const STAGE_CLASS_MAP = {
+  1: InitForm,
+  2: GuestsForm,
+  3: MenuForm,
+  4: EntreesForm,
+  5: MainsForm,
+  6: DessertsForm,
 };
 
-const FORM_STRING = `
-    <div class="rsvp">
-        <h3 class="rsvp__heading">Celebrate with us</h3>
-        <p>Fill in the form below to RSVP</p>
-        <p>(Please respond before 07/07/2022)</p>
-        <form  class="rsvp-form">
-            <div class="rsvp-form__content">
-              ${stateOneMarkup}
-            </div>
-            <button class="button rsvp-form__button">Next</button>
-        </form>
-    </div>`;
+class Rsvp {
+  _form = null;
+  _stage = 1;
+  answers;
 
-triggerButtons.forEach((button) =>
-  button.addEventListener("click", handleTriggerButtonClick)
-);
-
-function handleTriggerButtonClick(e) {
-  enableModal();
-  addFormToModal();
-  updateFormState({ stage: 1 });
-  addInputListeners();
-  addActionButtonListener();
-}
-
-function addFormToModal() {
-  const modal = getModal();
-  if (!modal) return;
-
-  modal.innerHTML = FORM_STRING;
-}
-
-function addActionButtonListener() {
-  const actionButton = document.querySelector(".rsvp-form__button");
-  actionButton.addEventListener("click", handleActionButtonClick);
-}
-
-function handleActionButtonClick(e) {
-  e.preventDefault();
-  validateFields();
-}
-
-function updateFormState(newValues) {
-  formState = { ...formState, ...newValues };
-}
-
-function getForm() {
-  return document.querySelector(".rsvp-form");
-}
-
-function addInputListeners() {
-  const form = getForm();
-  const inputs = Array.from(form.querySelectorAll("input"));
-  const textAreas = Array.from(form.querySelectorAll("textarea"));
-  const combinedInputs = [...inputs, ...textAreas];
-
-  combinedInputs.forEach((input) =>
-    input.addEventListener("focus", handleFocusOnInput)
-  );
-}
-
-function handleFocusOnInput() {
-  clearValidationErrors();
-}
-
-function getValidationErrorNodes() {
-  const form = getForm();
-  return Array.from(form.querySelectorAll(".rsvp-form__validation-error"));
-}
-
-function clearValidationErrors() {
-  const form = getForm();
-  const validationErrorNodes = getValidationErrorNodes();
-
-  if (validationErrorNodes.length < 1) return;
-
-  validationErrorNodes.forEach((node) => {
-    const parent = node.parentElement;
-    parent.removeChild(node);
-  });
-
-  updateFormState({ failedValidation: false });
-}
-
-function validateFields() {
-  const form = getForm();
-  const inputs = Array.from(form.querySelectorAll("input"));
-  const textAreas = Array.from(form.querySelectorAll("textarea"));
-
-  validateInputs(inputs);
-}
-
-function hasValidationErrors() {
-  return formState.failedValidation;
-}
-
-function validateInputs(inputs) {
-  const textInputs = inputs.filter((input) => input.type === "text");
-  const emailInput = inputs.find((input) => input.type === "email");
-  const radioInputs = inputs.filter((input) => input.type === "radio");
-
-  // errors already showing - must be cleared first
-  if (hasValidationErrors()) return;
-
-  validateTextInputs(textInputs);
-  validateEmailInput(emailInput);
-  validateRadioInputs(radioInputs);
-}
-
-function validateTextInputs(textInputs) {
-  if (textInputs.length < 1) return;
-  textInputs.forEach((input) => validateTextInput(input));
-}
-
-function validateRadioInputs(inputs) {}
-
-function validateTextInput(input) {
-  const { required, value, name } = input;
-
-  if (required && value.length < 1) {
-    updateFormState({ failedValidation: true });
-    displayValidationError(input, "This field is required");
-    return;
+  constructor() {
+    this.answers = new Answers();
+    this._setForm();
   }
 
-  if (name === "name" && !isValidNameInput(input)) {
-    updateFormState({ failedValidation: true });
-    displayValidationError(input, "Please input a valid name");
-    return;
+  getForm() {
+    return this._form;
+  }
+
+  _setForm() {
+    this._form = new STAGE_CLASS_MAP[this._stage](this.answers);
+    this._form.bindClickOnSubmitButton(this.handleActionButtonClick.bind(this));
+  }
+
+  handleActionButtonClick() {
+    const oldAnswers = this.answers.getAnswers();
+    const newAnswers = this._form.getAnswers();
+    this.answers.setAnswers({ ...oldAnswers, ...newAnswers });
+    this._nextStage();
+  }
+
+  _nextStage() {
+    this._form.destroy();
+    this._stage += 1;
+    this._setForm();
   }
 }
 
-function isValidNameInput(input) {
-  const { value } = input;
-  const isValidLength = value.length > 5;
-  const hasValidChars = value.match(/^[A-Za-z\s&']+$/);
-
-  if (!isValidLength || !hasValidChars) return false;
-  return true;
-}
-
-function validateEmailInput(input) {
-  const { required, value } = input;
-  const hasValidChars = value.match(
-    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-  );
-
-  if (required && value.length < 1) {
-    updateFormState({ failedValidation: true });
-    displayValidationError(input, "This field is required");
-    return;
-  }
-
-  if (!hasValidChars) {
-    updateFormState({ failedValidation: true });
-    displayValidationError(input, "Please input a valid email");
-  }
-}
-
-function createValidationErrorElement(message) {
-  const element = document.createElement("span");
-  element.classList.add("rsvp-form__validation-error");
-  element.innerText = message;
-  return element;
-}
-
-function displayValidationError(node, message) {
-  const parent = node.parentElement;
-  const validationElement = createValidationErrorElement(message);
-  parent.appendChild(validationElement);
-}
+export default Rsvp;

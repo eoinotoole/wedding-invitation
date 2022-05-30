@@ -12,15 +12,15 @@ class Base
     {
         $this->req = $req;
         $this->method = strtolower($this->req->getMethod());
+    }
 
+    public function callMethod()
+    {
         if (!method_exists($this, $this->method)) {
-            // send error
+            $res = new \App\Http\Response($this->req);
+            $res->sendNotAllowed();
             return;
         }
-
-        // if ($this->req->isApiPath()) {
-        //     $this->res->prepareResponse();
-        // }
 
         $this->{$this->method}();
     }

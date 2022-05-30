@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="Description" />
 
-    <title><?php echo $data['title']; ?></title>
+    <title><?php echo $templateData['title']; ?></title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,3 +16,5 @@
 </head>
 
 <body>
+    <?php include_once __DIR__ . '/nav.php'; ?>
+    <div class="modal-container"></div>

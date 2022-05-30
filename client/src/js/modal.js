@@ -1,34 +1,64 @@
-export function enableModal() {
-  const page = getPage();
-  if (!page) return;
+const FADE_ANIMATION_TIME = 200;
 
-  const modal = document.createElement("div");
-  modal.classList.add("modal");
-  modal.addEventListener("click", handleActiveModalClick);
+class Modal {
+  _container = null;
+  _modal = null;
 
-  document.body.classList.add("modal-active");
-  page.appendChild(modal);
-}
+  constructor() {
+    this._container = document.querySelector(".modal-container");
+  }
 
-export function disableModal() {
-  const page = getPage();
-  const modal = getModal();
-  page.removeChild(modal);
-  document.body.classList.remove("modal-active");
-}
+  _isActive() {
+    return Boolean(this._modal);
+  }
 
-export function getModal() {
-  return document.querySelector(".modal");
-}
+  build(contentContainerClass) {
+    if (this._isActive()) return;
 
-function getPage() {
-  return document.querySelector(".page");
-}
+    document.querySelector("body").classList.add("modal-active");
 
-function handleActiveModalClick(e) {
-  const isClickOutsideContent = e.target === this;
+    this._modal = document.createElement("div");
+    this._modal.classList.add("modal");
 
-  if (isClickOutsideContent) {
-    disableModal();
+    const modalContainer = document.createElement("div");
+    modalContainer.classList.add("modal__content");
+    const contentContainer = document.createElement("div");
+    contentContainer.classList.add(contentContainerClass);
+    modalContainer.appendChild(contentContainer);
+
+    this._modal.appendChild(modalContainer);
+    this._modal.addEventListener(
+      "click",
+      this._handleActiveModalClick.bind(this)
+    );
+    this._container.appendChild(this._modal);
+    setTimeout(this._fade.bind(this));
+  }
+
+  _destroy() {
+    if (!this._isActive()) return;
+    this._fade();
+    setTimeout(() => {
+      document.querySelector("body").classList.remove("modal-active");
+      this._container.removeChild(this._modal);
+      this._modal = null;
+    }, FADE_ANIMATION_TIME);
+  }
+
+  _fade() {
+    const isActive = Boolean(this._modal.classList.contains("active"));
+
+    if (!isActive) {
+      this._modal.classList.add("active");
+      return;
+    }
+    this._modal.classList.remove("active");
+  }
+
+  _handleActiveModalClick(e) {
+    const isClickOutsideContent = e.target === this._modal;
+    if (isClickOutsideContent) this._destroy();
   }
 }
+
+export default Modal;

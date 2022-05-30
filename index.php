@@ -6,8 +6,6 @@ class FrontController
 {
     private $req;
 
-    private $controller;
-
     public function __construct()
     {
         $this->req = new \App\Http\Request();
@@ -15,23 +13,28 @@ class FrontController
 
     public function run()
     {
+        if ($this->req->shouldRedirectToHome()) {
+            $res = new \App\Http\Response($this->req);
+            $res->redirect('');
+            return;
+        }
+
         $controllerClass = $this->getController();
 
         if (!class_exists($controllerClass)) {
-            // Handle Error, show error page
-            exit(1);
+            $controller = new \App\Controllers\Error($this->req);
+            $controller->get();
+            return;
         }
 
-        $this->controller = $controllerClass;
-        new $this->controller($this->req);
+        $controller = new $controllerClass($this->req);
+        $controller->callMethod();
     }
 
     private function getController()
     {
-        $parsedPath = $this->req->parsedPath ?: $this->req::DEFAULT_PATH;
-        $splitPath = $this->req->getSplitPath($parsedPath);
-        $controller = isset($splitPath[1]) ? ucfirst($splitPath[0]) . '\\' .
-            ucfirst($splitPath[1]) : ucfirst($parsedPath);
+        $splitPath = $this->req->getSplitPath($this->req->path);
+        $controller = ucfirst($splitPath[0]) . (isset($splitPath[1]) ? '\\' . ucfirst($splitPath[1]) : '') ?: 'Home';
         return "App\Controllers\\{$controller}";
     }
 }

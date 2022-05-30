@@ -1,3 +1,3 @@
 import "../scss/index.scss";
-import "./images";
-import "./rsvp";
+// import "./images";
+import "./Page";

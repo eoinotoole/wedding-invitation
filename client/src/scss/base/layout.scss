@@ -6,6 +6,8 @@ body {
   position: relative;
   max-width: 2000px;
   margin: 0 auto;
+  padding: 3rem 0;
+  background-color: $white;
 }
 
 .container {
@@ -15,7 +17,7 @@ body {
 }
 
 .container--lg {
-  max-width: 1200px;
+  max-width: 1300px;
 }
 
 .bg-grey {

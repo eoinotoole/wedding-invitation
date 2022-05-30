@@ -16,5 +16,21 @@ body.modal-active {
   align-items: center;
   padding: 1rem;
   background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: opacity 0.2s;
   cursor: pointer;
+}
+
+.modal.active {
+  opacity: 1;
+}
+
+.modal__content {
+  height: 90%;
+  max-width: 600px;
+  background: #fff;
+
+  @include tablet-landscape {
+    width: 600px;
+  }
 }

@@ -6,6 +6,13 @@
   font-family: inherit;
   letter-spacing: $body-letter-spacing;
   cursor: pointer;
+
+  &:disabled {
+    background-color: #f4f4f1;
+    border-color: #d9d9d4;
+    color: #cecec9;
+    cursor: not-allowed;
+  }
 }
 
 .button--lg {

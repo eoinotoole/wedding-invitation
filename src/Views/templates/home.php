@@ -1,28 +1,23 @@
 <?php include_once __DIR__ . '/header.php' ?>
 <div class="page">
-    <!-- <button class="menu-button">Menu</button>
-    <div class="menu">
-        <menu class="menu-list">
-            <li class="menu-list__item"><button class="menu-list__button">order of the day</button></li>
-            <li class="menu-list__item"><button class="menu-list__button">accommodation</button></li>
-            <li class="menu-list__item"><button class="menu-list__button">venue</button></li>
-            <li class="menu-list__item"><button class="menu-list__button">travel</button></li>
-        </menu>
-    </div> -->
     <main>
         <section class="intro">
-            <img class="intro__leaves" src="/static/images/leaves1.svg" alt="Hanging leaves illustration" />
-            <img class="intro__leaves-2" src="/static/images/leaves2.svg" alt="Hanging leaves illustration" />
+            <!-- <img class="intro__leaves" src="/static/images/leaves1.svg" alt="Hanging leaves illustration" /> -->
+            <!-- <img class="intro__leaves-2" src="/static/images/leaves2.svg" alt="Hanging leaves illustration" /> -->
             <div class="container">
                 <div class="intro__content">
-                    <h5 class="intro__small">The wedding of</h5>
-                    <h1 class="intro__large display lower">Maeve O’Toole <br />&<br /> William Pipe</h1>
-                    <h2 class="intro__info">
-                        <span class="intro-info__date">Sunday 6th November 2022</span>
+                    <span>Together with their families</span>
+                    <h1 class="intro__large">William Pipe & <br /> Maeve O’<span class="intro__toole-hack">Toole</span></h1>
+                    <div class="intro__section">
+                        <span>Request the pleasure of your company</span>
+                        <span>To celebrate their marriage at</span>
+                    </div>
+                    <div class="intro__section">
                         <span class="intro-info__venue">Ashley Park House</span>
-                        <span class="intro-info__town">Nenagh, Co. Tipperary</span>
-                    </h2>
-                    <button class="intro__button button button--lg button--rsvp-trigger">RSVP</button>
+                        <span>Nenagh, Co. Tipperary</span>
+                        <span>Sunday <span class="number-size-hack">6</span><sup>th</sup> November <span class="number-size-hack">2022</span> at <span class="number-size-hack">3</span>pm</span>
+                    </div>
+                    <button class="intro__button button button--lg rsvp-trigger">RSVP</button>
                 </div>
             </div>
         </section>
@@ -38,15 +33,19 @@
                         <ul class="schedule-list">
                             <li class="schedule-list-item">
                                 <div class="schedule-list-item__time">2.00pm</div>
-                                <div class="schedule-list-item__activity">Arrival at Ashley House Park for check-in</div>
+                                <div class="schedule-list-item__activity">Guests have the ability to arrive from 2pm for early check-in</div>
+                            </li>
+                            <li class="schedule-list-item">
+                                <div class="schedule-list-item__time">2:45pm</div>
+                                <div class="schedule-list-item__activity">Take your seats in the Boathouse/Ceremony room</div>
                             </li>
                             <li class="schedule-list-item">
                                 <div class="schedule-list-item__time">3:00pm</div>
-                                <div class="schedule-list-item__activity">Take your seats in the Ceremony Room</div>
+                                <div class="schedule-list-item__activity">Ceremony starts</div>
                             </li>
                             <li class="schedule-list-item">
-                                <div class="schedule-list-item__time">3:30pm</div>
-                                <div class="schedule-list-item__activity">Check-in (for guests staying at AHP) Drinks and Canapés</div>
+                                <div class="schedule-list-item__time">3:40pm</div>
+                                <div class="schedule-list-item__activity">Check-in (for guests staying at AHP) Drinks and Canapes</div>
                             </li>
                             <li class="schedule-list-item">
                                 <div class="schedule-list-item__time">6:00pm</div>
@@ -54,7 +53,7 @@
                             </li>
                             <li class="schedule-list-item">
                                 <div class="schedule-list-item__time">9:00pm</div>
-                                <div class="schedule-list-item__activity">Hitting the dancefloor</div>
+                                <div class="schedule-list-item__activity">Time to show off your moves, and hit the dancefloor (until late)</div>
                             </li>
                         </ul>
                     </div>
@@ -65,7 +64,7 @@
                         <ul class="schedule-list">
                             <li class="schedule-list-item">
                                 <div class="schedule-list-item__time">8:30am</div>
-                                <div class="schedule-list-item__activity">Breakfast in the Pavillion</div>
+                                <div class="schedule-list-item__activity">Breakfast in the pavillion (until 10:30am)</div>
                             </li>
                             <li class="schedule-list-item">
                                 <div class="schedule-list-item__time">11:00am</div>
@@ -76,26 +75,12 @@
                 </div>
             </div>
         </section>
-
-        <section class="accommodation">
+        <section class="countdown">
             <div class="container">
-                <img class="accommodation__leaves" src="/static/images/leaves5.svg" width="140" height="79" alt="Leaves illustration" />
-                <h3 class="heading">Accommodation</h3>
-                <p>All wedding guests have a room reserved for the night of the wedding.
-                    If a room is not required, please let us know asap.</p>
-                <p>All rooms are onsite and have large double beds with ensuite bathrooms.
-                    Some rooms are family rooms and can accommodate more than a couple sharing
-                    (friends staying together etc). We (Maeve & Will) will be allocating all rooms for our guests.
-                    Therefore, please do not contact the venue with any specific requests, just let us know and we
-                    will do our best to ensure your request is met.</p>
-                <p>Rates for the room are €95per person for Bed & Breakfast. All rooms are paid for on check-out
-                    on Monday 7th Nov.</p>
+                <h3 class="heading">Countdown to the big day</h3>
             </div>
         </section>
-
         <section class="venue">
-            <img class="venue__leaves-1" src="/static/images/leaves3.svg" alt="Hanging leaves illustration" />
-            <img class="venue__leaves-2" src="/static/images/leaves4.svg" alt="Hanging leaves illustration" />
             <div class="container">
                 <h3 class="heading">About the venue</h3>
                 <p>See website:
@@ -103,32 +88,6 @@
                 </p>
             </div>
         </section>
-
-        <section class="travel">
-            <div class="container">
-                <h3 class="heading">Travel</h3>
-                <div class="travel-info">
-                    <h5 class="travel-info__heading">Overseas</h5>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                </div>
-            </div>
-            <div class="container">
-                <p>If you are travelling to Ireland on Saturday, we recommend staying in Limerick on the Saturday night.
-                    There are numerous hotels, restaurants to enjoy a nice meal out on Sat night, and a multitude of hairdressers
-                    and beauty parlour for those who want to “glam up” the morning of the Big Day.</p>
-                <p>A taxi can be arranged by your hotel to get from Limerick to the venue (approx. cost of €x)</p>
-            </div>
-            <div class="travel__taxis travel__grey-wrap">
-                <div class="container container--lg">
-                    <ul class="travel-list">
-                        <li class="travel-list__item">All route taxis <br />+353 61 311111<a class="travel-list__link" href="tel:353 61 311111">Call</a></li>
-                        <li class="travel-list__item">Fixed price taxis <br />+353 61 313131<a class="travel-list__link" href="tel:+353 61 313131">Call</a></li>
-                        <li class="travel-list__item">Shannon airport taxis <br /> +353 61 332266<a class="travel-list__link" href="tel:+353 61 332266">Call</a></li>
-                    </ul>
-                </div>
-            </div>
-</div>
-</section>
-</main>
+    </main>
 </div>
 <?php require_once __DIR__ . '/footer.php';

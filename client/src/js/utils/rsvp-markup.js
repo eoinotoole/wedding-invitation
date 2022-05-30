@@ -1,4 +1,4 @@
-export const stateOneMarkup = `
+export const initFormMarkup = `
 <div class="rsvp-form__separation-wrap">
     <div class="rsvp-form__element">
         <input type="text" name="name" placeholder="Your name(s)" required>

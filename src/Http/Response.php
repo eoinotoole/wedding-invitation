@@ -32,6 +32,13 @@ class Response
         $this->output = $data;
     }
 
+    public function sendNotAllowed()
+    {
+        $this->setHeader('HTTP/1.x 405');
+        $this->setHeader('Content-Type: application/json; charset=UTF-8');
+        $this->send();
+    }
+
     public function send(): void
     {
         foreach ($this->headers as $header) {

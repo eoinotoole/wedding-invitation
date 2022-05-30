@@ -68,12 +68,15 @@ a {
   }
 }
 
-.display {
-  font-family: "Balqis", "Playfair Display", serif;
-  text-transform: none;
-  letter-spacing: initial;
-}
-
 .heading {
   margin-bottom: 1.6rem;
+}
+
+.heading--page {
+  font-size: 1.625rem;
+}
+
+sup {
+  font-size: x-small;
+  vertical-align: super;
 }

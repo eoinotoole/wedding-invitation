@@ -24,16 +24,17 @@
   margin-bottom: 0.2rem;
 }
 
-// .rsvp-form__content {
-
-// }
-
 .rsvp-form__separation-wrap {
   margin: 2.5rem 0;
 }
 
 .rsvp-form__element {
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.4rem;
+  text-align: left;
+}
+
+.rsvp-form-extra {
+  margin-bottom: 1.4rem;
   text-align: left;
 }
 
@@ -85,4 +86,50 @@
   margin: 0.5rem 0;
   font-size: 0.9rem;
   color: $error-red;
+}
+
+.rsvp-form-add {
+  display: inline-block;
+  padding-bottom: 1rem;
+}
+
+.rsvp-form-add__content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: $placeholder-grey;
+  cursor: pointer;
+}
+
+.rsvp-form-add__content span {
+  padding-left: 33px;
+}
+
+.rsvp-form-add__content .rsvp-form__icon {
+  top: 3px;
+}
+
+.rsvp-form-minus {
+  position: relative;
+}
+
+.rsvp-form-minus input {
+  padding-left: 33px;
+}
+
+.rsvp-form__icon {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  border: none;
+  background: transparent;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.rsvp-form__icon svg {
+  width: 22px;
 }

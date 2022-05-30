@@ -1,4 +1,10 @@
+.rsvp-container {
+  height: 870px;
+}
+
 .rsvp {
+  position: relative;
+  height: 100%;
   max-width: 600px;
   max-height: 100%;
   overflow-y: scroll;
@@ -20,17 +26,38 @@
   }
 }
 
+.rsvp__top {
+  margin-bottom: 3.6rem;
+}
+
 .rsvp__heading {
   margin-bottom: 0.2rem;
 }
 
 .rsvp-form__separation-wrap {
   margin: 2.5rem 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.rsvp-form__content {
+  max-height: 620px;
+  overflow-y: scroll;
 }
 
 .rsvp-form__element {
   margin-bottom: 1.4rem;
   text-align: left;
+}
+
+.rsvp-form__element--guests {
+  margin-bottom: 0.9rem;
 }
 
 .rsvp-form-extra {
@@ -64,6 +91,23 @@
   }
 }
 
+.rsvp-form__checker--menu {
+  align-items: flex-start;
+  margin-bottom: 2.4rem !important;
+}
+
+.rsvp-form__checkers--vertical {
+  flex-direction: column;
+}
+
+.rsvp-form__checkers--vertical .rsvp-form__checker {
+  margin: 0 0 1.4rem 0;
+
+  &:last-child {
+    margin: 0;
+  }
+}
+
 .rsvp-form__radio {
   display: inline-block;
   width: 1.1rem;
@@ -72,13 +116,33 @@
   cursor: pointer;
 }
 
+.rsvp-form__checker--menu .rsvp-form__radio {
+  margin: 0.4rem 0.5rem 0 0;
+}
+
+.rsvp-form-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  width: 100%;
+  padding: 2rem 0;
+  background: #fff;
+}
+
 .rsvp-form__button {
   width: 280px;
   max-width: 100%;
   padding: 1rem;
-  margin-top: 1rem;
   background-color: #ece8d6;
   text-transform: uppercase;
+}
+
+.rsvp-form__button + .rsvp-form__button {
+  margin-top: 0.8rem;
 }
 
 .rsvp-form__validation-error {
@@ -90,7 +154,7 @@
 
 .rsvp-form-add {
   display: inline-block;
-  padding-bottom: 1rem;
+  margin-bottom: 1.1rem;
 }
 
 .rsvp-form-add__content {
@@ -132,4 +196,33 @@
 
 .rsvp-form__icon svg {
   width: 22px;
+}
+
+.rsvp-label-heading {
+  display: block;
+  font-size: 17px;
+}
+
+.rsvp-label-description {
+  display: block;
+  font-size: 14px;
+}
+
+.rsvp-form-guest-actions {
+  display: flex;
+}
+
+.rsvp-form-guest-actions__item {
+  margin-right: 1.3rem;
+  color: $placeholder-grey;
+
+  &:last-child {
+    margin: 0;
+  }
+}
+
+.rsvp-form--guest-actions__selection {
+  color: #89aea6;
+  letter-spacing: $body-letter-spacing;
+  cursor: pointer;
 }

@@ -1,9 +1,11 @@
 class RsvpForm {
+  _currentGuestName;
   _answers;
   _container;
   _hasValidationErrors = false;
 
-  constructor(answers) {
+  constructor(currentGuestName, answers) {
+    this._currentGuestName = currentGuestName;
     this._answers = answers;
     this._container = document.querySelector(".rsvp-container");
     this.render();
@@ -25,6 +27,7 @@ class RsvpForm {
       e.preventDefault();
       this._validateFields();
       if (this._getHasValidationErrors()) return;
+      this._handleActionButtonClick();
       handler();
     });
   }
@@ -46,8 +49,18 @@ class RsvpForm {
     );
   }
 
+  _handleActionButtonClick() {
+    this._saveAnswers();
+  }
+
   _handleFocusOnInput() {
     this._clearValidationErrors();
+  }
+
+  _getCurrentGuest() {
+    return this._answers
+      .getGuests()
+      .find((guest) => guest.getName() === this._currentGuestName);
   }
 
   _clearValidationErrors() {
@@ -72,13 +85,17 @@ class RsvpForm {
   _getFormMarkup(formContent) {
     return `
         <div class="rsvp">
-           ${this._getHeadingMarkup()}
-           ${this._getSubHeadingMarkup()}
+            <div class="rsvp__top">
+            ${this._getHeadingMarkup()}
+            ${this._getSubHeadingMarkup()}
+           </div>
             <form class="rsvp-form">
                 <div class="rsvp-form__content">
                   ${formContent}
                 </div>
-                <button class="button rsvp-form__button">Next</button>
+                <div class="rsvp-form-button-container">
+                    <button class="button rsvp-form__button">Next</button>
+                </div>
             </form>
         </div>`;
   }
@@ -97,6 +114,10 @@ class RsvpForm {
 
   _getActionButton() {
     return document.querySelector(".rsvp-form__button");
+  }
+
+  _getActionButtons() {
+    return Array.from(document.querySelectorAll(".rsvp-form__button"));
   }
 
   _getHasValidationErrors() {

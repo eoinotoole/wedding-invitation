@@ -19,7 +19,7 @@ class Guest {
   }
 
   getMenu() {
-    return this.menu;
+    return this._menu;
   }
 
   setDietaryRequirements(dietaryRequirements) {

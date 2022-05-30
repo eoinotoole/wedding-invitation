@@ -5,6 +5,7 @@ import MenuForm from "./MenuForm";
 import EntreesForm from "./EntreesForm";
 import MainsForm from "./MainsForm";
 import DessertsForm from "./DessertsForm";
+import ConfirmForm from "./ConfirmForm";
 
 const STAGE_CLASS_MAP = {
   1: InitForm,
@@ -13,11 +14,13 @@ const STAGE_CLASS_MAP = {
   4: EntreesForm,
   5: MainsForm,
   6: DessertsForm,
+  7: ConfirmForm,
 };
 
 class Rsvp {
   _form = null;
   _stage = 1;
+  _currentGuestName = "";
   answers;
 
   constructor() {
@@ -30,20 +33,31 @@ class Rsvp {
   }
 
   _setForm() {
-    this._form = new STAGE_CLASS_MAP[this._stage](this.answers);
+    this._form = new STAGE_CLASS_MAP[this._stage](
+      this._currentGuestName,
+      this.answers
+    );
     this._form.bindClickOnSubmitButton(this.handleActionButtonClick.bind(this));
+
+    if (this._stage === 2) {
+      this._form.bindClickOnStartSelection(
+        this.handleGuestSelectionClick.bind(this)
+      );
+    }
   }
 
-  handleActionButtonClick() {
-    const oldAnswers = this.answers.getAnswers();
-    const newAnswers = this._form.getAnswers();
-    this.answers.setAnswers({ ...oldAnswers, ...newAnswers });
+  handleGuestSelectionClick(guestName) {
+    this._currentGuestName = guestName;
     this._nextStage();
   }
 
-  _nextStage() {
+  handleActionButtonClick(stageNumber) {
+    this._nextStage(stageNumber);
+  }
+
+  _nextStage(stageNumber) {
     this._form.destroy();
-    this._stage += 1;
+    this._stage = stageNumber ?? this._stage + 1;
     this._setForm();
   }
 }

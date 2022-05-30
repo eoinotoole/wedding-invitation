@@ -41,7 +41,7 @@ class InitForm extends RsvpForm {
     `;
   }
 
-  getAnswers() {
+  _saveAnswers() {
     const form = this._getForm();
     const guests = Array.from(
       form.querySelectorAll(".rsvp-form__guest-input")
@@ -55,13 +55,11 @@ class InitForm extends RsvpForm {
     ).find((input) => input.checked).value;
     const commentsValue = form.querySelector("textarea[name='comments']").value;
 
-    return {
-      guests,
-      email: emailValue,
-      isAttending: isAttendingValue,
-      isStayingTheNight: isStayingTheNightValue,
-      comments: commentsValue,
-    };
+    this._answers.setGuests(guests);
+    this._answers.setEmail(emailValue);
+    this._answers.setIsAttending(isAttendingValue);
+    this._answers.setIsStayingTheNight(isStayingTheNightValue);
+    this._answers.setComments(commentsValue);
   }
 
   _getHeadingMarkup() {
@@ -69,7 +67,7 @@ class InitForm extends RsvpForm {
   }
 
   _getSubHeadingMarkup() {
-    return ` <p>Fill in the form below to RSVP</p>
+    return ` <p>Fill in the form to RSVP</p>
       <p>(Please respond before 07/07/2022)</p>`;
   }
 
@@ -101,47 +99,49 @@ class InitForm extends RsvpForm {
           </div>
       </div>
       
-      <div class="rsvp-form__separation-wrap">
-          <div class="rsvp-form__element">
-              <p>Will you be attending the wedding?</p>
-              <div class="rsvp-form__checkers">
-                  <div class="rsvp-form__checker">
-                      <input id="rsvp-attend-accept" type="radio" name="attend" value="accept" class="rsvp-form__radio" ${
-                        answers.getIsAttending() ? "checked" : ""
-                      }>
-                      <label for="rsvp-attend-accept">Joyfully accept</label>
-                  </div>
-                  <div class="rsvp-form__checker">
-                      <input id="rsvp-attend-decline" type="radio" name="attend" value="decline" class="rsvp-form__radio" ${
-                        answers.getIsAttending() === false ? "checked" : ""
-                      }>
-                      <label for="rsvp-attend-decline">Regretfully decline</label>
-                  </div>        
-              </div>
-          </div>
-      </div>
+    <div style="margin: 3rem 0;">
+        <div class="rsvp-form__separation-wrap">
+            <div class="rsvp-form__element">
+                <p>Will you be attending the wedding?</p>
+                <div class="rsvp-form__checkers">
+                    <div class="rsvp-form__checker">
+                        <input id="rsvp-attend-accept" type="radio" name="attend" value="accept" class="rsvp-form__radio" ${
+                          answers.getIsAttending() ? "checked" : ""
+                        }>
+                        <label for="rsvp-attend-accept">Joyfully accept</label>
+                    </div>
+                    <div class="rsvp-form__checker">
+                        <input id="rsvp-attend-decline" type="radio" name="attend" value="decline" class="rsvp-form__radio" ${
+                          answers.getIsAttending() === false ? "checked" : ""
+                        }>
+                        <label for="rsvp-attend-decline">Regretfully decline</label>
+                    </div>        
+                </div>
+            </div>
+        </div>
       
-      <div class="rsvp-form__separation-wrap">
-          <div class="rsvp-form__element">
-              <p>Will you be spending the night at Ashley Park House?</p>
-              <div class="rsvp-form__checkers">
-                  <div class="rsvp-form__checker">
-                      <input id="rsvp-accommodation-yes" type="radio" name="accommodation" value="yes" class="rsvp-form__radio" ${
-                        answers.getIsStayingTheNight() ? "checked" : ""
-                      }>
-                      <label for="rsvp-accommodation-yes">Yes</label>
-                  </div>
-                  <div class="rsvp-form__checker">
-                      <input id="rsvp-accommodation-no" type="radio" name="accommodation" value="no" class="rsvp-form__radio" ${
-                        answers.getIsStayingTheNight() === false
-                          ? "checked"
-                          : ""
-                      }>
-                      <label for="rsvp-accommodation-no">No</label>
-                  </div>        
-              </div>
-          </div>
-      </div>
+        <div class="rsvp-form__separation-wrap">
+            <div class="rsvp-form__element">
+                <p>Will you be spending the night at Ashley Park House?</p>
+                <div class="rsvp-form__checkers">
+                    <div class="rsvp-form__checker">
+                        <input id="rsvp-accommodation-yes" type="radio" name="accommodation" value="yes" class="rsvp-form__radio" ${
+                          answers.getIsStayingTheNight() ? "checked" : ""
+                        }>
+                        <label for="rsvp-accommodation-yes">Yes</label>
+                    </div>
+                    <div class="rsvp-form__checker">
+                        <input id="rsvp-accommodation-no" type="radio" name="accommodation" value="no" class="rsvp-form__radio" ${
+                          answers.getIsStayingTheNight() === false
+                            ? "checked"
+                            : ""
+                        }>
+                        <label for="rsvp-accommodation-no">No</label>
+                    </div>        
+                </div>
+            </div>
+        </div>
+    </div>
       
       <div class="rsvp-form__separation-wrap">
           <div class="rsvp-form__element">

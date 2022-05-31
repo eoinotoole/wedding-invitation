@@ -1,4 +1,5 @@
 import RsvpForm from "./RsvpForm";
+import { getAvailableDishesFromFieldMap } from "./utils/field-menu-item-map";
 
 class DessertsForm extends RsvpForm {
   _getSubHeadingMarkup() {
@@ -9,24 +10,29 @@ class DessertsForm extends RsvpForm {
   }
 
   _getBodyMarkup() {
+    const menu = this._getCurrentGuest().getMenu();
+    const desserts = getAvailableDishesFromFieldMap(menu, "dessert");
+    let dessertsMarkup = "";
+
+    desserts.forEach(({ name, heading, description }) => {
+      dessertsMarkup += `
+        <div class="rsvp-form__checker rsvp-form__checker--menu">
+          <input id="rsvp-dessert-${name}" type="radio" name="dessert" value="${name}" class="rsvp-form__radio" ${
+        this._isMenuInputChecked("dessert", name) ? "checked" : ""
+      }>
+          <label for="rsvp-dessert-${name}">
+            <span class="rsvp-label-heading">${heading}</span>
+            <span class="rsvp-label-description">${description}</span>
+          </label>
+        </div>
+    `;
+    });
+
     return `
     <div class="rsvp-form__separation-wrap">
       <div class="rsvp-form__element">
         <div class="rsvp-form__checkers rsvp-form__checkers--vertical">
-          <div class="rsvp-form__checker rsvp-form__checker--menu">
-            <input id="rsvp-dessert-brule" type="radio" name="dessert" value="brule" class="rsvp-form__radio">
-            <label for="rsvp-dessert-brule">
-              <span class="rsvp-label-heading">Crème Brûlée</span>
-              <span class="rsvp-label-description">With a sugar crust & berry compote (3,9)</span>
-            </label>
-          </div>
-          <div class="rsvp-form__checker rsvp-form__checker--menu">
-            <input id="rsvp-dessert-torte" type="radio" name="dessert" value="torte" class="rsvp-form__radio">
-            <label for="rsvp-dessert-torte">
-              <span class="rsvp-label-heading">Pear and almond torte</span>
-              <span class="rsvp-label-description">With vanilla bean ice cream (1,3,8,9)</span>
-            </label>
-          </div>  
+          ${dessertsMarkup}
         </div>
       </div>
     </div>

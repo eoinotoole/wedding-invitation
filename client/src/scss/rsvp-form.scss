@@ -1,11 +1,11 @@
 .rsvp-container {
-  height: 870px;
+  height: 840px;
 }
 
 .rsvp {
   position: relative;
   height: 100%;
-  max-width: 600px;
+  max-width: 650px;
   max-height: 100%;
   overflow-y: scroll;
   background: #fff;
@@ -18,16 +18,17 @@
   }
 
   @include tablet-portrait {
-    padding: 2rem;
+    width: 600px;
+    padding: 2rem 2.5rem;
   }
 
   @include tablet-landscape {
-    width: 600px;
+    width: 650px;
   }
 }
 
 .rsvp__top {
-  margin-bottom: 3.6rem;
+  margin-bottom: 3.4rem;
 }
 
 .rsvp__heading {
@@ -47,8 +48,9 @@
 }
 
 .rsvp-form__content {
-  max-height: 620px;
+  max-height: 540px;
   overflow-y: scroll;
+  padding-bottom: 2rem;
 }
 
 .rsvp-form__element {
@@ -91,17 +93,17 @@
   }
 }
 
-.rsvp-form__checker--menu {
-  align-items: flex-start;
-  margin-bottom: 2.4rem !important;
-}
-
 .rsvp-form__checkers--vertical {
   flex-direction: column;
 }
 
 .rsvp-form__checkers--vertical .rsvp-form__checker {
   margin: 0 0 1.4rem 0;
+}
+
+.rsvp-form__checkers--vertical .rsvp-form__checker--menu {
+  align-items: flex-start;
+  margin-bottom: 2rem;
 
   &:last-child {
     margin: 0;
@@ -226,7 +228,7 @@
 
 .rsvp-form-guest-actions__item {
   margin-right: 1.3rem;
-  color: $placeholder-grey;
+  color: #cecec9;
 
   &:last-child {
     margin: 0;
@@ -236,5 +238,17 @@
 .rsvp-form--guest-actions__selection {
   color: #89aea6;
   letter-spacing: $body-letter-spacing;
+  cursor: pointer;
+}
+
+.dietary-info {
+  font-size: 14px;
+  margin-bottom: 1.4rem;
+}
+
+.rsvp-form-allergy-button {
+  font-family: inherit;
+  letter-spacing: inherit;
+  color: #89aea6;
   cursor: pointer;
 }

@@ -1,4 +1,5 @@
 import RsvpForm from "./RsvpForm";
+import { getChosenDishFromFieldMap } from "./utils/field-menu-item-map";
 
 class ConfirmForm extends RsvpForm {
   bindClickOnSubmitButton(handler) {
@@ -21,7 +22,65 @@ class ConfirmForm extends RsvpForm {
   }
 
   _getBodyMarkup() {
-    return ``;
+    const menu = this._getCurrentGuest().getField("menu");
+    const dietary = this._getCurrentGuest().getField("dietaryRequirements");
+    const entree = this._getCurrentGuest().getField("entree");
+    const main = this._getCurrentGuest().getField("main");
+    const dessert = this._getCurrentGuest().getField("dessert");
+
+    const entreeText = getChosenDishFromFieldMap(menu, "entree", entree);
+    const mainText = getChosenDishFromFieldMap(menu, "main", main);
+    const dessertText = getChosenDishFromFieldMap(menu, "dessert", dessert);
+
+    return `
+    <div class="selection-confirm">
+      <div class="rsvp-form__separation-wrap">
+        <div class="selection-confirm__container selection-confirm__container--horiz">
+          <div class="selection-confirm__menu">
+            <h5>Menu</h5>
+            <p>${menu.charAt(0).toUpperCase() + menu.slice(1)}</p>
+          </div>
+          <div class="selection-confirm__menu selection-confirm__menu--dietary">
+            <h5>Dietary restrictions</h5>
+            <p>${dietary || "None"}</p>
+          </div>
+        </div>
+      </div>
+      <div class="rsvp-form__separation-wrap">
+        <div class="selection-confirm__container">
+          <div class="selection-confirm__menu">
+            <h4>Entree</h4>
+            <div class="selection-confirm__dish">
+              <h5>${entreeText.heading}</h5>
+              <p>${entreeText.description}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="rsvp-form__separation-wrap">
+        <div class="selection-confirm__container">
+          <div class="selection-confirm__menu">
+            <h4>Main</h4>
+            <div class="selection-confirm__dish">
+              <h5>${mainText.heading}</h5>
+              <p>${mainText.description}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="rsvp-form__separation-wrap">
+        <div class="selection-confirm__container">
+          <div class="selection-confirm__menu">
+            <h4>Dessert</h4>
+            <div class="selection-confirm__dish">
+              <h5>${dessertText.heading}</h5>
+              <p>${dessertText.description}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    `;
   }
 
   _getFormMarkup(formContent) {

@@ -1,0 +1,41 @@
+.selection-confirm__container {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.selection-confirm__container--horiz {
+  @include tablet-portrait {
+    flex-direction: row;
+  }
+}
+
+.selection-confirm__menu--dietary {
+  overflow: hidden;
+}
+
+.selection-confirm__menu {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+
+  &:first-child {
+    flex-basis: 0;
+  }
+}
+
+.selection-confirm__container--horiz .selection-confirm__menu:first-child {
+  margin: 0 0 1rem 0;
+
+  @include tablet-portrait {
+    margin: 0 1.4rem 0 0;
+  }
+}
+
+.selection-confirm__dish h5 {
+  margin-bottom: 0.2rem;
+}
+
+.selection-confirm .rsvp-form__separation-wrap {
+  margin-bottom: 2.1rem;
+}

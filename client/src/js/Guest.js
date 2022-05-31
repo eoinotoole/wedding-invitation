@@ -1,13 +1,17 @@
 class Guest {
-  _name;
-  _menu;
-  _dietaryRequirements;
-  _entree;
-  _main;
-  _dessert;
+  _name = "";
+  _menu = "";
+  _dietaryRequirements = "";
+  _entree = "";
+  _main = "";
+  _dessert = "";
 
   constructor(name) {
     this._name = name;
+  }
+
+  getField(field) {
+    return this[`_${field}`];
   }
 
   getName() {

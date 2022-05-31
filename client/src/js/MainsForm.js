@@ -1,4 +1,5 @@
 import RsvpForm from "./RsvpForm";
+import { getAvailableDishesFromFieldMap } from "./utils/field-menu-item-map";
 
 class MainsForm extends RsvpForm {
   _getSubHeadingMarkup() {
@@ -9,24 +10,29 @@ class MainsForm extends RsvpForm {
   }
 
   _getBodyMarkup() {
+    const menu = this._getCurrentGuest().getMenu();
+    const mains = getAvailableDishesFromFieldMap(menu, "main");
+    let mainsMarkup = "";
+
+    mains.forEach(({ name, heading, description }) => {
+      mainsMarkup += `
+        <div class="rsvp-form__checker rsvp-form__checker--menu">
+          <input id="rsvp-main-${name}" type="radio" name="main" value="${name}" class="rsvp-form__radio" ${
+        this._isMenuInputChecked("main", name) ? "checked" : ""
+      }>
+          <label for="rsvp-main-${name}">
+            <span class="rsvp-label-heading">${heading}</span>
+            <span class="rsvp-label-description">${description}</span>
+          </label>
+        </div>
+    `;
+    });
+
     return `
     <div class="rsvp-form__separation-wrap">
       <div class="rsvp-form__element">
         <div class="rsvp-form__checkers rsvp-form__checkers--vertical">
-          <div class="rsvp-form__checker rsvp-form__checker--menu">
-            <input id="rsvp-main-bass" type="radio" name="main" value="bass" class="rsvp-form__radio">
-            <label for="rsvp-main-bass">
-              <span class="rsvp-label-heading">Pan fried seabass</span>
-              <span class="rsvp-label-description">With a red pepper and sun dried tomato sauce (3,4,9)</span>
-            </label>
-          </div>
-          <div class="rsvp-form__checker rsvp-form__checker--menu">
-            <input id="rsvp-main-lamb" type="radio" name="main" value="lamb" class="rsvp-form__radio">
-            <label for="rsvp-main-lamb">
-              <span class="rsvp-label-heading">Roast lamb</span>
-              <span class="rsvp-label-description">With garlic and rosemary jus (13)</span>
-            </label>
-          </div>  
+          ${mainsMarkup}
         </div>
       </div>
     </div>

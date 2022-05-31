@@ -34,7 +34,6 @@ function getPageFromDom() {
 
 function runAnimationIn() {
   const menu = getMenuFromDom();
-  console.log(menu);
   if (!menu) return;
 
   menu.style.backgroundColor = "#eee";

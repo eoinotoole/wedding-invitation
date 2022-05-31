@@ -8,6 +8,8 @@ class Request
 
     private const API_PATH = 'api/';
 
+    public const REQ_URL = 'php://input';
+
     private $req;
 
     public $path = self::DEFAULT_PATH;

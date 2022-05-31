@@ -1,4 +1,5 @@
 import RsvpForm from "./RsvpForm";
+import { getAvailableDishesFromFieldMap } from "./utils/field-menu-item-map";
 
 class EntreesForm extends RsvpForm {
   _getSubHeadingMarkup() {
@@ -9,24 +10,29 @@ class EntreesForm extends RsvpForm {
   }
 
   _getBodyMarkup() {
+    const menu = this._getCurrentGuest().getMenu();
+    const entrees = getAvailableDishesFromFieldMap(menu, "entree");
+    let entreesMarkup = "";
+
+    entrees.forEach(({ name, heading, description }) => {
+      entreesMarkup += `
+        <div class="rsvp-form__checker rsvp-form__checker--menu">
+          <input id="rsvp-entree-${name}" type="radio" name="entree" value="${name}" class="rsvp-form__radio" ${
+        this._isMenuInputChecked("entree", name) ? "checked" : ""
+      }>
+          <label for="rsvp-entree-${name}">
+            <span class="rsvp-label-heading">${heading}</span>
+            <span class="rsvp-label-description">${description}</span>
+          </label>
+        </div>
+    `;
+    });
+
     return `
     <div class="rsvp-form__separation-wrap">
       <div class="rsvp-form__element">
         <div class="rsvp-form__checkers rsvp-form__checkers--vertical">
-          <div class="rsvp-form__checker rsvp-form__checker--menu">
-            <input id="rsvp-entree-pate" type="radio" name="entree" value="pate" class="rsvp-form__radio">
-            <label for="rsvp-entree-pate">
-              <span class="rsvp-label-heading">Homemade Chicken Liver Pate</span>
-              <span class="rsvp-label-description">Served with brioche bread, redcurrant purée and fresh garden salad (1,9,11)</span>
-            </label>
-          </div>
-          <div class="rsvp-form__checker rsvp-form__checker--menu">
-            <input id="rsvp-entree-cheese" type="radio" name="entree" value="cheese" class="rsvp-form__radio">
-            <label for="rsvp-entree-cheese">
-              <span class="rsvp-label-heading">Baked Goat\’s Cheese & Avacado</span>
-              <span class="rsvp-label-description">Wrapped in filo pastry & served with basil pesto (1,8,9,11)</span>
-            </label>
-          </div>  
+          ${entreesMarkup}
         </div>
       </div>
     </div>

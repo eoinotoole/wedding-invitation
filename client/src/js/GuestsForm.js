@@ -4,7 +4,7 @@ class GuestsForm extends RsvpForm {
   bindClickOnSubmitButton(handler) {
     this._getActionButton().addEventListener("click", (e) => {
       e.preventDefault();
-      handler(undefined, true);
+      handler();
     });
   }
 

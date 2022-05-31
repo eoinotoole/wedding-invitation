@@ -35,7 +35,7 @@ class Modal {
     setTimeout(this._fade.bind(this));
   }
 
-  _destroy() {
+  destroy() {
     if (!this._isActive()) return;
     this._fade();
     setTimeout(() => {
@@ -57,7 +57,7 @@ class Modal {
 
   _handleActiveModalClick(e) {
     const isClickOutsideContent = e.target === this._modal;
-    if (isClickOutsideContent) this._destroy();
+    if (isClickOutsideContent) this.destroy();
   }
 }
 

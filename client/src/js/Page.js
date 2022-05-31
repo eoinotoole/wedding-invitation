@@ -1,5 +1,6 @@
 import Modal from "./Modal";
 import Rsvp from "./Rsvp";
+import { createCustomEvents } from "./utils/global-events";
 
 class Page {
   _container = null;
@@ -9,9 +10,13 @@ class Page {
   constructor() {
     this._container = document.querySelector(".page");
     this._modal = new Modal();
-    // TODO: handle better
-    if (!this._container) throw new Error("NO PAGE FOUND");
+
     this.setRsvpTriggers();
+    window.addEventListener(
+      "modalClose",
+      this._handleModalCloseEvent.bind(this)
+    );
+    createCustomEvents();
   }
 
   setRsvpTriggers() {
@@ -27,6 +32,12 @@ class Page {
   handleTriggerButtonClick() {
     this._modal.build("rsvp-container");
     this._rsvp = new Rsvp();
+  }
+
+  _handleModalCloseEvent() {
+    console.log("CLOSE");
+    this._modal.destroy();
+    this._rsvp = null;
   }
 }
 

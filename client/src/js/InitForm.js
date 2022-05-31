@@ -13,13 +13,7 @@ class InitForm extends RsvpForm {
     super._addEventListeners();
 
     const form = this._getForm();
-    // const inputs = Array.from(form.querySelectorAll("input"));
-    // const textAreas = Array.from(form.querySelectorAll("textarea"));
-    // const combinedInputs = [...inputs, ...textAreas];
     const addTrigger = form.querySelector(".rsvp-form-add__content");
-    // combinedInputs.forEach((input) =>
-    //   input.addEventListener("focus", this._handleFocusOnInput.bind(this))
-    // );
     addTrigger.addEventListener(
       "click",
       this._handleAddTriggerClick.bind(this)
@@ -87,12 +81,16 @@ class InitForm extends RsvpForm {
       form.querySelectorAll(".rsvp-form__guest-input")
     ).map((guestInput) => new Guest(guestInput.value));
     const emailValue = form.querySelector("input[name='email']").value;
-    const isAttendingValue = Array.from(
-      form.querySelectorAll("input[name='attend']")
-    ).find((input) => input.checked).value;
-    const isStayingTheNightValue = Array.from(
-      form.querySelectorAll("input[name='accommodation']")
-    ).find((input) => input.checked).value;
+    const isAttendingValue = this._getBooleanFromYesNo(
+      Array.from(form.querySelectorAll("input[name='attend']")).find(
+        (input) => input.checked
+      ).value
+    );
+    const isStayingTheNightValue = this._getBooleanFromYesNo(
+      Array.from(form.querySelectorAll("input[name='accommodation']")).find(
+        (input) => input.checked
+      ).value
+    );
     const commentsValue = form.querySelector("textarea[name='comments']").value;
 
     this._answers.setGuests(guests);
@@ -100,6 +98,10 @@ class InitForm extends RsvpForm {
     this._answers.setIsAttending(isAttendingValue);
     this._answers.setIsStayingTheNight(isStayingTheNightValue);
     this._answers.setComments(commentsValue);
+  }
+
+  _getBooleanFromYesNo(value) {
+    return value === "yes" ? true : false;
   }
 
   _getHeadingMarkup() {
@@ -135,7 +137,7 @@ class InitForm extends RsvpForm {
 
 
           <div class="rsvp-form__element">
-              <input type="email" name="email" placeholder="Email address" value="${answers.getEmail()}">
+              <input type="email" name="email" placeholder="Email address (one per party)" value="${answers.getEmail()}">
           </div>
       </div>
       
@@ -145,13 +147,13 @@ class InitForm extends RsvpForm {
                 <p>Will you be attending the wedding?</p>
                 <div class="rsvp-form__checkers">
                     <div class="rsvp-form__checker">
-                        <input id="rsvp-attend-accept" type="radio" name="attend" value="accept" class="rsvp-form__radio" ${
+                        <input id="rsvp-attend-accept" type="radio" name="attend" value="yes" class="rsvp-form__radio" ${
                           answers.getIsAttending() ? "checked" : ""
                         }>
                         <label for="rsvp-attend-accept">Joyfully accept</label>
                     </div>
                     <div class="rsvp-form__checker">
-                        <input id="rsvp-attend-decline" type="radio" name="attend" value="decline" class="rsvp-form__radio" ${
+                        <input id="rsvp-attend-decline" type="radio" name="attend" value="no" class="rsvp-form__radio" ${
                           answers.getIsAttending() === false ? "checked" : ""
                         }>
                         <label for="rsvp-attend-decline">Regretfully decline</label>

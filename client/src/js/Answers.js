@@ -51,7 +51,7 @@ class Answers {
       isAttending: this._isAttending,
       isStayingTheNight: this._isStayingTheNight,
       comments: this._comments,
-      guests: this.guests,
+      guests: this._guests,
     };
   }
 

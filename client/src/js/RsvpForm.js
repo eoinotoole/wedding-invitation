@@ -200,6 +200,11 @@ class RsvpForm {
     return textInputs.length > 1;
   }
 
+  _isMenuInputChecked(name, value) {
+    const currentGuest = this._getCurrentGuest();
+    return currentGuest.getField(name) === value;
+  }
+
   _isValidNameInput(input) {
     const { value } = input;
     const isValidLength = value.length > 5;
@@ -217,7 +222,6 @@ class RsvpForm {
     radioContainers.forEach((container) => {
       const inputs = Array.from(container.querySelectorAll("input"));
       const hasSelection = inputs.some((input) => input.checked);
-      console.log(hasSelection);
       if (!hasSelection) {
         this._setHasValidationErrors(true);
         this._displayValidationError(container, "This field is required");

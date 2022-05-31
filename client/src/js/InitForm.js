@@ -188,7 +188,7 @@ class InitForm extends RsvpForm {
       <div class="rsvp-form__separation-wrap">
           <div class="rsvp-form__element">
               <h5>Any other comments</h5>
-              <textarea name="comments" rows="4" placeholder="Your message (optional)">${answers.getComments()}</textarea>
+              <textarea name="comments" rows="4" maxlength="350" placeholder="Your message (optional)">${answers.getComments()}</textarea>
           </div>
       </div>
       `;

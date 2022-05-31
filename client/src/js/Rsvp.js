@@ -69,6 +69,7 @@ class Rsvp {
 
   _handleSubmission() {
     const jsonAnswers = JSON.stringify(this.answers.getAnswers());
+    console.log("HERE", jsonAnswers);
     fetch("/api/rsvps", {
       method: "POST",
       body: jsonAnswers,

@@ -15,6 +15,7 @@
                 <li><a href="" target="_blank">The Savoy Hotel, Limerick</a></li>
                 <li><a href="" target="_blank">The George Hotel, Limerick</a></li>
             </ul>
+            <br>
             <h3>Travel time to Ashley Park House</h3>
             <ul>
                 <li><a href="" target="_blank">Shannon (nearest airport)</a> - 1 hour drive</li>
@@ -23,6 +24,7 @@
                 <li><a href="" target="_blank">Limerick (nearest city)</a> - 35 mins drive</li>
                 <li><a href="" target="_blank">Cork City</a> - 1 hour 50 mins drive</li>
             </ul>
+            <br>
             <p>Please do not hesitate to contact us regarding any of your concerns or questions about the venue, the accommodation, the surrounding areas and how to get there.</p>
         </main>
     </div>

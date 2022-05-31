@@ -45,13 +45,26 @@ class Answers {
     this._guests = guests;
   }
 
+  _getGuestsForSend(guests) {
+    return guests.map(
+      ({ _name, _menu, _dietaryRequirements, _entree, _main, _dessert }) => ({
+        name: _name,
+        menu: _menu,
+        dietaryRequirements: _dietaryRequirements,
+        entree: _entree,
+        main: _main,
+        dessert: _dessert,
+      })
+    );
+  }
+
   getAnswers() {
     return {
       email: this._email,
       isAttending: this._isAttending,
       isStayingTheNight: this._isStayingTheNight,
       comments: this._comments,
-      guests: this._guests,
+      guests: this._getGuestsForSend(this._guests),
     };
   }
 

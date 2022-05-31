@@ -6,7 +6,7 @@
 }
 
 .intro__content {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: 2.4px;
 
@@ -16,7 +16,7 @@
 }
 
 .intro__section {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 .intro__section span {
@@ -38,24 +38,20 @@
   }
 
   @include tablet-landscape {
-    font-size: 10.8rem;
-  }
-
-  @include large-desktop {
-    font-size: 12rem;
+    font-size: 11rem;
   }
 }
 
 .intro-info__venue {
   display: block;
-  font-size: 1.4em;
+  font-size: 1.5em;
   margin-top: 1rem;
 }
 
 .intro__button {
   position: relative;
   z-index: 1;
-  margin-top: 1.8rem;
+  margin-top: 1.4rem;
   font-size: 1rem;
 }
 

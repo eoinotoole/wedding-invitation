@@ -1,10 +1,10 @@
 services:
   php-apache:
     build: .
-      ports:
-        - 80:80
     env_file:
       - .env
+    ports:
+      - 80:80
     volumes:
       - ./src/:/var/www/html/src
       - ./client/src/:/var/www/html/client/src

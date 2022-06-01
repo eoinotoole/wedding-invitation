@@ -1,0 +1,38 @@
+.faq-list__item {
+    padding-bottom: 1.6rem;
+    margin-bottom: 2.2rem;
+    border-bottom: 1px solid #eeeeee;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.faq-dropdown {
+    cursor: pointer;
+}
+
+.faq-dropdown__q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 3px;
+    font-size: 1.25rem;
+}
+
+.faq-dropdown__a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+
+    p {
+        margin: .7rem 0 0;
+    }
+}
+
+.faq-dropdown__icon {
+    display: flex;
+    align-items: center;
+    width: 22px;
+    min-width: 22px;
+}

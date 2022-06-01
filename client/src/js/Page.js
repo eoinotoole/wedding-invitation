@@ -1,5 +1,6 @@
 import Modal from "./Modal";
 import Rsvp from "./Rsvp";
+import FaqList from "./FaqList";
 import { createCustomEvents } from "./utils/global-events";
 
 class Page {
@@ -10,6 +11,7 @@ class Page {
   constructor() {
     this._container = document.querySelector(".page");
     this._modal = new Modal();
+    new FaqList();
 
     this.setRsvpTriggers();
     window.addEventListener(
@@ -35,7 +37,6 @@ class Page {
   }
 
   _handleModalCloseEvent() {
-    console.log("CLOSE");
     this._modal.destroy();
     this._rsvp = null;
   }

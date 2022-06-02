@@ -6,4 +6,4 @@ Simple wedding invitation for M&amp;W wedding 2022
 - Run `cd client & npm run-script dev` to build static files and enable webpack watch
 
 ## For production
-- Run `docker-composer up -d`
+- Run `docker-compose up -d`

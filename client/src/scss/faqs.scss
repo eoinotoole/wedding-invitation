@@ -21,9 +21,10 @@
 }
 
 .faq-dropdown__a {
-    max-height: 0;
+    max-height: 0px;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
+    cursor: default;
 
     p {
         margin: .7rem 0 0;
@@ -35,4 +36,16 @@
     align-items: center;
     width: 22px;
     min-width: 22px;
+}
+
+.faq-answer-list {
+    margin-top: 1rem;
+}
+
+.faq-answer-list__item {
+    margin-bottom: .8rem;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
 }

@@ -1,6 +1,7 @@
 import Modal from "./Modal";
 import Rsvp from "./Rsvp";
 import FaqList from "./FaqList";
+import Countdown from "./Countdown";
 import { createCustomEvents } from "./utils/global-events";
 
 class Page {
@@ -12,6 +13,7 @@ class Page {
     this._container = document.querySelector(".page");
     this._modal = new Modal();
     new FaqList();
+    new Countdown();
 
     this.setRsvpTriggers();
     window.addEventListener(

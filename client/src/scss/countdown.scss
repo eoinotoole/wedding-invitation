@@ -3,3 +3,28 @@
   text-align: center;
   padding: $section-spacing 0;
 }
+
+.countdown__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.countdown__col {
+  display: flex;
+  flex-direction: column;
+}
+
+.countdown__value {
+  font-size: 2rem;
+}
+
+.countdown__dots {
+  font-size: 2.4rem;
+  margin: 0 2rem;
+}
+
+.countdown__label {
+  display: block;
+  text-transform: uppercase;
+}

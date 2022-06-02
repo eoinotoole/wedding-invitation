@@ -78,6 +78,22 @@
         <section class="countdown">
             <div class="container">
                 <h3 class="heading">Countdown to the big day</h3>
+                <div class="countdown__container">
+                    <div class="countdown__col">
+                        <span class="countdown__value countdown__value--days"></span>
+                        <span class="countdown__label">Days</span>
+                    </div>
+                    <span class="countdown__dots">:</span>
+                    <div class="countdown__col">
+                        <span class="countdown__value countdown__value--hours"></span>
+                        <span class="countdown__label">Hours</span>
+                    </div>
+                    <span class="countdown__dots">:</span>
+                    <div class="countdown__col">
+                        <span class="countdown__value countdown__value--mins"></span>
+                        <span class="countdown__label">Minutes</span>
+                    </div>
+                </div>
             </div>
         </section>
         <section class="venue">

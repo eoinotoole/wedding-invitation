@@ -1,4 +1,5 @@
 import Modal from "./Modal";
+import Nav from "./Nav";
 import Rsvp from "./Rsvp";
 import FaqList from "./FaqList";
 import Countdown from "./Countdown";
@@ -13,6 +14,7 @@ class Page {
   constructor() {
     this._container = document.querySelector(".page");
     this._modal = new Modal();
+    new Nav();
 
     this.setRsvpTriggers();
     window.addEventListener(

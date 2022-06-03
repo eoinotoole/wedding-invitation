@@ -5,7 +5,11 @@
 }
 
 .schedule__dates {
-  margin-top: 3.8rem;
+  margin-top: 1.8rem;
+
+  @include tablet-portrait {
+    margin-top: 3.8rem;
+  }
 }
 
 .schedule-date {
@@ -44,7 +48,7 @@
 }
 
 .schedule-date__time {
-  font-size: 21px;
+  font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: $heading-letter-spacing;
   text-align: left;

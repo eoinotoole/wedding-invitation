@@ -95,7 +95,7 @@ class ConfirmForm extends RsvpForm {
                   ${formContent}
                 </div>
                 <div class="form__button-container form__button-container--rsvp">
-                    <button class="button button--rsvp form__button" data-action="edit">Edit choices</button>
+                    <button class="button button--rsvp button--rsvp-edit form__button" data-action="edit">Edit choices</button>
                     <button class="button button--rsvp form__button" data-action="confirm">Confirm</button>
                 </div>
             </form>

@@ -69,11 +69,25 @@ a {
 }
 
 .heading {
+  font-size: 1.3rem;
   margin-bottom: 1.6rem;
+
+  @include tablet-portrait {
+    font-size: 1.45rem;
+  }
+
+  @include tablet-landscape {
+    font-size: 1.6rem;
+  }
 }
 
 .heading--page {
   font-size: 1.625rem;
+}
+
+.heading--page-body {
+  font-size: 1.3rem;
+  margin-bottom: .8rem;
 }
 
 sup {

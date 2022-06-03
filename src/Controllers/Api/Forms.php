@@ -43,6 +43,7 @@ class Forms extends \App\Controllers\Base
 
     private function sendAdminEmails($reqBody): void
     {
+        $tos = ['eoinjamesotoole@gmail.com' => 'Eoin', 'willandmaeve_wedding@outlook.com' => 'WillAndMaeve'];
         $primaryGuest = $reqBody['guests'][0]['name'];
         $primaryEmail = $reqBody['email'];
         $isAttending = $reqBody['isAttending'] ? 'Yes' : 'No';
@@ -53,7 +54,7 @@ class Forms extends \App\Controllers\Base
         $email = new \SendGrid\Mail\Mail();
         $email->setFrom("admin@willandmaevesayido.com", "Admin");
         $email->setSubject("RSVP Received");
-        $email->addTo("eoinjamesotoole@gmail.com", "Eoin");
+        $email->addTos($tos);
         $email->addContent(
             "text/html",
             "
@@ -81,6 +82,7 @@ class Forms extends \App\Controllers\Base
 
     private function sendGuestConfirmationEmail($reqBody)
     {
+        $primaryGuest = $reqBody['guests'][0]['name'];
         $primaryEmail = $reqBody['email'];
         $isAttending = $reqBody['isAttending'] ? 'Yes' : 'No';
         $isStayingTheNight = $reqBody['isStayingTheNight'] ? 'Yes' : 'No';
@@ -91,7 +93,7 @@ class Forms extends \App\Controllers\Base
         $email = new \SendGrid\Mail\Mail();
         $email->setFrom("admin@willandmaevesayido.com", "Admin");
         $email->setSubject("RSVP Submitted");
-        $email->addTo("eoinjamesotoole@gmail.com", "Eoin");
+        $email->addTo($primaryEmail, $primaryGuest);
         $email->addContent(
             "text/html",
             "
@@ -151,11 +153,12 @@ class Forms extends \App\Controllers\Base
     private function sendContactEmail($reqBody)
     {
         ['name' => $name, 'email' => $emailAddress, 'message' => $message] = $reqBody;
+        $tos = ['eoinjamesotoole@gmail.com' => 'Eoin', 'willandmaeve_wedding@outlook.com' => 'WillAndMaeve'];
 
         $email = new \SendGrid\Mail\Mail();
         $email->setFrom("admin@willandmaevesayido.com", "Admin");
         $email->setSubject("Contact Form Submission");
-        $email->addTo("eoinjamesotoole@gmail.com", "Eoin");
+        $email->addTos($tos);
         $email->addContent(
             "text/html",
             "

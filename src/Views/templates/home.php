@@ -1,5 +1,5 @@
 <?php include_once __DIR__ . '/header.php' ?>
-<div class="page">
+<div class="page page--home">
     <main>
         <section class="intro">
             <!-- <img class="intro__leaves" src="/static/images/leaves1.svg" alt="Hanging leaves illustration" /> -->

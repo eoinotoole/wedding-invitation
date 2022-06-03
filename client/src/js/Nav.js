@@ -28,11 +28,11 @@ class Nav {
 
   _handleResizeEvent() {
     const viewPortWidth = window.innerWidth;
-    if (viewPortWidth > 900) this._resetMobileNav();
+    if (viewPortWidth > 1000) this._resetMobileNav();
   }
 
   _resetMobileNav() {
-    this._navList.style.maxHeight = "0px";
+    this._navList.style.maxHeight = "auto";
     this._container.classList.remove("nav--mobile-active");
     this._navButton.classList.remove("nav__button--active");
     this._updateButtonIcon(true);

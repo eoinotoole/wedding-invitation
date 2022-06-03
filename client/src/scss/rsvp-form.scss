@@ -1,15 +1,14 @@
 .rsvp-container {
-  height: 840px;
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
 }
 
 .rsvp {
-  position: relative;
   height: 100%;
-  max-width: 650px;
   max-height: 100%;
   overflow-y: scroll;
-  background: #fff;
-  padding: 2rem 1.3rem;
+  padding: 2rem 1.3rem 5rem;
   text-align: center;
   cursor: default;
 
@@ -27,6 +26,14 @@
   }
 }
 
+.rsvp--confirm {
+  padding: 2rem 1.3rem 10rem;
+
+  @include tablet-portrait {
+    padding: 2rem 2.5rem;
+  }
+}
+
 .rsvp__top {
   margin-bottom: 3rem;
 }
@@ -36,9 +43,6 @@
 }
 
 .form__content--rsvp {
-  max-height: 540px;
-  overflow-y: scroll;
-  padding-bottom: 2rem;
 }
 
 .rsvp-form-extra {
@@ -110,8 +114,12 @@
   transform: translateX(-50%);
   bottom: 0;
   width: 100%;
-  padding: 2rem 0;
+  padding: 1rem 0;
   background: #fff;
+
+  @include tablet-landscape {
+    padding: 2rem 0;
+  }
 }
 
 .rsvp-form__button + .rsvp-form__button {

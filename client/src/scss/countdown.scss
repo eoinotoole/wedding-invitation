@@ -16,7 +16,11 @@
 }
 
 .countdown__value {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
+
+  @include tablet-landscape {
+    font-size: 1.6rem;
+  }
 }
 
 .countdown__dots {

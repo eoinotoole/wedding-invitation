@@ -10,8 +10,12 @@ body {
   background-color: $white;
 
   @include tablet-landscape {
-    padding: 3rem 0;
+    padding: 3rem 0 4rem;
   }
+}
+
+.page--home {
+  padding-bottom: 0;
 }
 
 .container {

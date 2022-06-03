@@ -85,7 +85,7 @@ class ConfirmForm extends RsvpForm {
 
   _getFormMarkup(formContent) {
     return `
-        <div class="rsvp">
+        <div class="rsvp rsvp--confirm">
             <div class="rsvp__top">
             ${this._getHeadingMarkup()}
             ${this._getSubHeadingMarkup()}

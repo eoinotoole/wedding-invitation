@@ -17,7 +17,11 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 3px;
-    font-size: 1.25rem;
+    font-size: 1.2rem;
+
+    @include tablet-landscape {
+        font-size: 1.25rem;
+    }
 }
 
 .faq-dropdown__a {

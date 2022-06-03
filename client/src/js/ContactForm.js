@@ -1,6 +1,13 @@
 import Form from "./Form";
 
 class ContactForm extends Form {
+  _container;
+
+  init() {
+    this._container = document.querySelector(".contact-container");
+    super.init();
+  }
+
   _addEventListeners() {
     super._addEventListeners();
 
@@ -26,9 +33,23 @@ class ContactForm extends Form {
       method: "POST",
       body: JSON.stringify({ type: "contact", ...data }),
     })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        if (res.ok) {
+          this._handleSuccessfulSubmission();
+          return;
+        }
+        throw new Error("Something went wrong!");
+      })
+      .catch(this._handleFailedSubmission.bind(this));
   }
+
+  _handleSuccessfulSubmission() {
+    this._container.innerHTML = `
+    <p>Success! Thank you for your submission. We'll respond as soon as possible 🙂</p>
+    `;
+  }
+
+  _handleFailedSubmission() {}
 }
 
 export default ContactForm;

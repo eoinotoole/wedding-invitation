@@ -26,12 +26,16 @@ body.modal-active {
 }
 
 .modal__content {
-  max-width: 650px;
-  max-height: 100%;
-  overflow-y: scroll;
+  height: 100%;
+  min-height: 100%;
+  overflow: hidden;
   background: #fff;
+  position: relative;
+
 
   @include tablet-landscape {
     width: 650px;
+    height: 850px;
+    min-height: 850px;
   }
 }

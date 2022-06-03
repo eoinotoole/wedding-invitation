@@ -9,9 +9,8 @@ class GuestsForm extends RsvpForm {
   }
 
   bindClickOnStartSelection(handler) {
-    const form = this._getForm();
     const startSelectionButtons = Array.from(
-      form.querySelectorAll(".rsvp-form--guest-actions__selection")
+      this._form.querySelectorAll(".rsvp-form--guest-actions__selection")
     );
     startSelectionButtons.forEach((button) =>
       button.addEventListener("click", (e) => {
@@ -29,11 +28,11 @@ class GuestsForm extends RsvpForm {
     const guests = this._answers.getGuests();
     return guests.reduce((total, current) => {
       total += `
-        <div class="rsvp-form__separation-wrap">
-            <div class="rsvp-form__element rsvp-form__element--guests">
+        <div class="form__separation-wrap">
+            <div class="form__element form__element--guests">
             <input class="rsvp-form__guest-input" type="text" value="${current.getName()}" readonly>
             </div> 
-            <div class="rsvp-form__element">
+            <div class="form__element">
                 <ul class="rsvp-form-guest-actions">
                     ${this._getGuestActions(current.getName())}
                 </ul>
@@ -62,11 +61,11 @@ class GuestsForm extends RsvpForm {
            ${this._getHeadingMarkup()}
            ${this._getSubHeadingMarkup()}
         </div>
-        <form class="rsvp-form">
-            <div class="rsvp-form__content">
+        <form class="form form--rsvp">
+            <div class="form__content form__content--rsvp">
                 ${formContent}
             </div>
-            <div class="rsvp-form-button-container">
+            <div class="form__button-container form__button-container--rsvp">
                 ${this._getSubmitButton()}
             </div>
         </form>
@@ -82,8 +81,8 @@ class GuestsForm extends RsvpForm {
     }, true);
 
     return isSelectionProcessDone
-      ? '<button class="button rsvp-form__button">Submit</button>'
-      : '<button class="button rsvp-form__button" disabled>Submit</button>';
+      ? '<button class="button button--rsvp form__button">Submit</button>'
+      : '<button class="button button--rsvp form__button" disabled>Submit</button>';
   }
 }
 

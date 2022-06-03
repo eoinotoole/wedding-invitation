@@ -36,3 +36,31 @@ input:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0 1000px white inset;
   -webkit-text-fill-color: inherit !important;
 }
+
+.form__separation-wrap {
+  margin: 2.5rem 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.form__element {
+  margin-bottom: 1.4rem;
+  text-align: left;
+}
+
+.form__element--guests {
+  margin-bottom: 0.9rem;
+}
+
+.form__validation-error {
+  display: block;
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  color: $error-red;
+}

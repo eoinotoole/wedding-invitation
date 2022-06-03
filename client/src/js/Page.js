@@ -2,6 +2,7 @@ import Modal from "./Modal";
 import Rsvp from "./Rsvp";
 import FaqList from "./FaqList";
 import Countdown from "./Countdown";
+import ContactForm from "./ContactForm";
 import { createCustomEvents } from "./utils/global-events";
 
 class Page {
@@ -12,8 +13,6 @@ class Page {
   constructor() {
     this._container = document.querySelector(".page");
     this._modal = new Modal();
-    new FaqList();
-    new Countdown();
 
     this.setRsvpTriggers();
     window.addEventListener(
@@ -21,6 +20,24 @@ class Page {
       this._handleModalCloseEvent.bind(this)
     );
     createCustomEvents();
+    this._initPage();
+  }
+
+  _initPage() {
+    const page = window.location.pathname.split("/")[1];
+    switch (page) {
+      case "":
+        new Countdown();
+        return;
+      case "contact":
+        new ContactForm().init();
+        return;
+      case "faqs":
+        new FaqList();
+        return;
+      default:
+        return;
+    }
   }
 
   setRsvpTriggers() {

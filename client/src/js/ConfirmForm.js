@@ -34,7 +34,7 @@ class ConfirmForm extends RsvpForm {
 
     return `
     <div class="selection-confirm">
-      <div class="rsvp-form__separation-wrap">
+      <div class="form__separation-wrap">
         <div class="selection-confirm__container selection-confirm__container--horiz">
           <div class="selection-confirm__menu">
             <h5>Menu</h5>
@@ -46,7 +46,7 @@ class ConfirmForm extends RsvpForm {
           </div>
         </div>
       </div>
-      <div class="rsvp-form__separation-wrap">
+      <div class="form__separation-wrap">
         <div class="selection-confirm__container">
           <div class="selection-confirm__menu">
             <h4>Entree</h4>
@@ -57,7 +57,7 @@ class ConfirmForm extends RsvpForm {
           </div>
         </div>
       </div>
-      <div class="rsvp-form__separation-wrap">
+      <div class="form__separation-wrap">
         <div class="selection-confirm__container">
           <div class="selection-confirm__menu">
             <h4>Main</h4>
@@ -68,7 +68,7 @@ class ConfirmForm extends RsvpForm {
           </div>
         </div>
       </div>
-      <div class="rsvp-form__separation-wrap">
+      <div class="form__separation-wrap">
         <div class="selection-confirm__container">
           <div class="selection-confirm__menu">
             <h4>Dessert</h4>
@@ -90,13 +90,13 @@ class ConfirmForm extends RsvpForm {
             ${this._getHeadingMarkup()}
             ${this._getSubHeadingMarkup()}
            </div>
-            <form class="rsvp-form">
-                <div class="rsvp-form__content">
+            <form class="form form--rsvp">
+                <div class="form__content form__content--rsvp">
                   ${formContent}
                 </div>
-                <div class="rsvp-form-button-container">
-                    <button class="button rsvp-form__button" data-action="edit">Edit choices</button>
-                    <button class="button rsvp-form__button" data-action="confirm">Confirm</button>
+                <div class="form__button-container form__button-container--rsvp">
+                    <button class="button button--rsvp form__button" data-action="edit">Edit choices</button>
+                    <button class="button button--rsvp form__button" data-action="confirm">Confirm</button>
                 </div>
             </form>
         </div>`;

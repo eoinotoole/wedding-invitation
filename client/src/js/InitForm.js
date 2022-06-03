@@ -12,8 +12,7 @@ class InitForm extends RsvpForm {
   _addEventListeners() {
     super._addEventListeners();
 
-    const form = this._getForm();
-    const addTrigger = form.querySelector(".rsvp-form-add__content");
+    const addTrigger = this._form.querySelector(".rsvp-form-add__content");
     addTrigger.addEventListener(
       "click",
       this._handleAddTriggerClick.bind(this)
@@ -33,15 +32,13 @@ class InitForm extends RsvpForm {
   }
 
   _showAddButton() {
-    const form = this._getForm();
-    const addBlock = form.querySelector(".rsvp-form-add");
+    const addBlock = this._form.querySelector(".rsvp-form-add");
     addBlock.classList.remove("disabled");
     addBlock.querySelector("span").innerText = "Add additional guest";
   }
 
   _hideAddButton() {
-    const form = this._getForm();
-    const addBlock = form.querySelector(".rsvp-form-add");
+    const addBlock = this._form.querySelector(".rsvp-form-add");
     addBlock.classList.add("disabled");
     addBlock.querySelector("span").innerText = "Guests limit reached";
   }
@@ -51,7 +48,7 @@ class InitForm extends RsvpForm {
     const minusWrap = document.createElement("div");
     const button = document.createElement("button");
     const input = document.createElement("input");
-    element.classList.add("rsvp-form__element");
+    element.classList.add("form__element");
     minusWrap.classList.add("rsvp-form-minus");
     button.classList.add("rsvp-form__icon");
     button.innerHTML = MINUS_ICON;
@@ -68,7 +65,7 @@ class InitForm extends RsvpForm {
   }
 
   _handleMinusTriggerClick(e) {
-    const guestBlock = e.currentTarget.closest(".rsvp-form__element");
+    const guestBlock = e.currentTarget.closest(".form__element");
     guestBlock.parentNode.removeChild(guestBlock);
     this._guestsNumber -= 1;
 
@@ -76,22 +73,23 @@ class InitForm extends RsvpForm {
   }
 
   _saveAnswers() {
-    const form = this._getForm();
     const guests = Array.from(
-      form.querySelectorAll(".rsvp-form__guest-input")
+      this._form.querySelectorAll(".rsvp-form__guest-input")
     ).map((guestInput) => new Guest(guestInput.value));
-    const emailValue = form.querySelector("input[name='email']").value;
+    const emailValue = this._form.querySelector("input[name='email']").value;
     const isAttendingValue = this._getBooleanFromYesNo(
-      Array.from(form.querySelectorAll("input[name='attend']")).find(
+      Array.from(this._form.querySelectorAll("input[name='attend']")).find(
         (input) => input.checked
       ).value
     );
     const isStayingTheNightValue = this._getBooleanFromYesNo(
-      Array.from(form.querySelectorAll("input[name='accommodation']")).find(
-        (input) => input.checked
-      ).value
+      Array.from(
+        this._form.querySelectorAll("input[name='accommodation']")
+      ).find((input) => input.checked).value
     );
-    const commentsValue = form.querySelector("textarea[name='comments']").value;
+    const commentsValue = this._form.querySelector(
+      "textarea[name='comments']"
+    ).value;
 
     this._answers.setGuests(guests);
     this._answers.setEmail(emailValue);
@@ -126,24 +124,24 @@ class InitForm extends RsvpForm {
 
   _getBodyMarkup(answers) {
     return `
-      <div class="rsvp-form__separation-wrap">
-          <div class="rsvp-form__element">
+      <div class="form__separation-wrap">
+          <div class="form__element">
             <input class="rsvp-form__guest-input" type="text" name="name" placeholder="Guest name" autocomplete="off">
           </div>  
           <div class="rsvp-form-guests-container"></div>      
-          <div class="rsvp-form__element">
+          <div class="form__element">
                 ${this._getAddMarkup()}
             </div>
 
 
-          <div class="rsvp-form__element">
+          <div class="form__element">
               <input type="email" name="email" placeholder="Email address (one per party)" value="${answers.getEmail()}">
           </div>
       </div>
       
     <div style="margin: 3rem 0;">
-        <div class="rsvp-form__separation-wrap">
-            <div class="rsvp-form__element">
+        <div class="form__separation-wrap">
+            <div class="form__element">
                 <p>Will you be attending the wedding?</p>
                 <div class="rsvp-form__checkers">
                     <div class="rsvp-form__checker">
@@ -162,8 +160,8 @@ class InitForm extends RsvpForm {
             </div>
         </div>
       
-        <div class="rsvp-form__separation-wrap">
-            <div class="rsvp-form__element">
+        <div class="form__separation-wrap">
+            <div class="form__element">
                 <p>Will you be spending the night at Ashley Park House?</p>
                 <div class="rsvp-form__checkers">
                     <div class="rsvp-form__checker">
@@ -185,8 +183,8 @@ class InitForm extends RsvpForm {
         </div>
     </div>
       
-      <div class="rsvp-form__separation-wrap">
-          <div class="rsvp-form__element">
+      <div class="form__separation-wrap">
+          <div class="form__element">
               <h5>Any other comments</h5>
               <textarea name="comments" rows="4" maxlength="350" placeholder="Your message (optional)">${answers.getComments()}</textarea>
           </div>

@@ -33,8 +33,8 @@ class MenuForm extends RsvpForm {
 
   _getBodyMarkup(answers) {
     return ` 
-    <div class="rsvp-form__separation-wrap">
-        <div class="rsvp-form__element">
+    <div class="form__separation-wrap">
+        <div class="form__element">
             <div class="rsvp-form__checkers rsvp-form__checkers--vertical">
                 <div class="rsvp-form__checker">
                     <input id="rsvp-menu-standard" type="radio" name="menu" value="standard" class="rsvp-form__radio" ${
@@ -61,8 +61,8 @@ class MenuForm extends RsvpForm {
             </div>
         </div>
     </div>
-    <div class="rsvp-form__separation-wrap">
-      <div class="rsvp-form__element">
+    <div class="form__separation-wrap">
+      <div class="form__element">
         <h5>Other dietary requirements</h5>
         <p class="dietary-info">Please let us know any dietary requirements you have. The chefs at Ashley Park House are happy to substitute ingredients to fit your needs</p>
         <textarea name="dietary" rows="5" placeholder="Gluten free, lactose intolerant etc. (optional)">${this._getCurrentGuest().getField(
@@ -74,11 +74,12 @@ class MenuForm extends RsvpForm {
   }
 
   _saveAnswers() {
-    const form = this._getForm();
     const menuValue = Array.from(
-      form.querySelectorAll("input[name='menu']")
+      this._form.querySelectorAll("input[name='menu']")
     ).find((input) => input.checked).value;
-    const dietaryValue = form.querySelector("textarea[name='dietary']").value;
+    const dietaryValue = this._form.querySelector(
+      "textarea[name='dietary']"
+    ).value;
 
     const currentGuest = this._getCurrentGuest();
     currentGuest.setMenu(menuValue);

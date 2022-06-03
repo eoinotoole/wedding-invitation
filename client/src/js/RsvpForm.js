@@ -1,15 +1,20 @@
-class RsvpForm {
+import Form from "./Form";
+
+class RsvpForm extends Form {
   _currentGuestName;
   _answers;
   _container;
-  _hasValidationErrors = false;
 
   constructor(currentGuestName, answers) {
+    super();
     this._currentGuestName = currentGuestName;
     this._answers = answers;
+  }
+
+  init() {
     this._container = document.querySelector(".rsvp-container");
     this.render();
-    this._addEventListeners();
+    super.init();
   }
 
   destroy() {
@@ -33,61 +38,14 @@ class RsvpForm {
     });
   }
 
-  _addEventListeners() {
-    const form = this._getForm();
-    const inputs = Array.from(form.querySelectorAll("input"));
-    const textAreas = Array.from(form.querySelectorAll("textarea"));
-    const combinedInputs = [...inputs, ...textAreas];
-
-    combinedInputs.forEach((input) =>
-      input.addEventListener("focus", this._handleFocusOnInput.bind(this))
-    );
-    form.addEventListener("submit", (e) => e.preventDefault());
-  }
-
-  _removeEventListeners() {
-    const form = this._getForm();
-    const inputs = Array.from(form.querySelectorAll("input"));
-    const textAreas = Array.from(form.querySelectorAll("textarea"));
-    const combinedInputs = [...inputs, ...textAreas];
-
-    form.removeEventListener("submit", (e) => e.preventDefault());
-    combinedInputs.forEach((input) =>
-      input.removeEventListener("focus", this._handleFocusOnInput.bind(this))
-    );
-  }
-
   _handleActionButtonClick() {
     this._saveAnswers();
-  }
-
-  _handleFocusOnInput() {
-    this._clearValidationErrors();
   }
 
   _getCurrentGuest() {
     return this._answers
       .getGuests()
       .find((guest) => guest.getName() === this._currentGuestName);
-  }
-
-  _clearValidationErrors() {
-    const form = this._getForm();
-    const validationErrorNodes = this._getValidationErrorNodes();
-
-    if (validationErrorNodes.length < 1) return;
-
-    validationErrorNodes.forEach((node) => {
-      const parent = node.parentElement;
-      parent.removeChild(node);
-    });
-
-    this._setHasValidationErrors(false);
-  }
-
-  _getValidationErrorNodes() {
-    const form = this._getForm();
-    return Array.from(form.querySelectorAll(".rsvp-form__validation-error"));
   }
 
   _getFormMarkup(formContent) {
@@ -97,12 +55,12 @@ class RsvpForm {
             ${this._getHeadingMarkup()}
             ${this._getSubHeadingMarkup()}
            </div>
-            <form class="rsvp-form" autocomplete="off">
-                <div class="rsvp-form__content">
+            <form class="form form--rsvp" autocomplete="off">
+                <div class="form__content form__content--rsvp">
                   ${formContent}
                 </div>
-                <div class="rsvp-form-button-container">
-                    <button class="button rsvp-form__button">Next</button>
+                <div class="form__button-container form__button-container--rsvp">
+                    <button class="button button--rsvp form__button">Next</button>
                 </div>
             </form>
         </div>`;
@@ -114,50 +72,6 @@ class RsvpForm {
 
   _getSubHeadingMarkup() {
     return "";
-  }
-
-  _getForm() {
-    return document.querySelector(".rsvp-form");
-  }
-
-  _getActionButton() {
-    return document.querySelector(".rsvp-form__button");
-  }
-
-  _getActionButtons() {
-    return Array.from(document.querySelectorAll(".rsvp-form__button"));
-  }
-
-  _getHasValidationErrors() {
-    return this._hasValidationErrors;
-  }
-
-  _setHasValidationErrors(hasValidationErrors) {
-    this._hasValidationErrors = hasValidationErrors;
-  }
-
-  _validateFields() {
-    const form = this._getForm();
-    const inputs = Array.from(form.querySelectorAll("input"));
-    const textAreas = Array.from(form.querySelectorAll("textarea"));
-    this._validateInputs(inputs);
-  }
-
-  _validateInputs(inputs) {
-    const textInputs = inputs.filter((input) => input.type === "text");
-    const emailInput = inputs.find((input) => input.type === "email");
-
-    // errors already showing - must be cleared first
-    if (this._getHasValidationErrors()) return;
-
-    this._validateTextInputs(textInputs);
-    this._validateEmailInput(emailInput);
-    this._validateRadioInputs();
-  }
-
-  _validateTextInputs(textInputs) {
-    if (textInputs.length < 1) return;
-    textInputs.forEach((input) => this._validateTextInput(input));
   }
 
   _validateTextInput(input) {
@@ -177,7 +91,7 @@ class RsvpForm {
     }
 
     if (
-      validNameAttributes.includes(name) &&
+      validNameAttributes.includes(input.name) &&
       this._isDuplicateGuestInput(input)
     ) {
       this._setHasValidationErrors(true);
@@ -189,8 +103,7 @@ class RsvpForm {
   }
 
   _isDuplicateGuestInput(input) {
-    const form = this._getForm();
-    const textInputs = Array.from(form.querySelectorAll("input"))
+    const textInputs = Array.from(this._form.querySelectorAll("input"))
       .filter(
         (input) =>
           (input.type === "text" && input.name === "name") ||
@@ -203,61 +116,6 @@ class RsvpForm {
   _isMenuInputChecked(name, value) {
     const currentGuest = this._getCurrentGuest();
     return currentGuest.getField(name) === value;
-  }
-
-  _isValidNameInput(input) {
-    const { value } = input;
-    const isValidLength = value.length > 5;
-    const hasValidChars = value.match(/^[A-Za-z\s&']+$/);
-
-    if (!isValidLength || !hasValidChars) return false;
-    return true;
-  }
-
-  _validateRadioInputs() {
-    const form = this._getForm();
-    const radioContainers = Array.from(
-      form.querySelectorAll(".rsvp-form__checkers")
-    );
-    radioContainers.forEach((container) => {
-      const inputs = Array.from(container.querySelectorAll("input"));
-      const hasSelection = inputs.some((input) => input.checked);
-      if (!hasSelection) {
-        this._setHasValidationErrors(true);
-        this._displayValidationError(container, "This field is required");
-      }
-    });
-  }
-
-  _validateEmailInput(input) {
-    if (!input) return;
-    const hasValidChars = input.value.match(
-      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    );
-
-    if (input.value.length < 1) {
-      this._setHasValidationErrors(true);
-      this._displayValidationError(input, "This field is required");
-      return;
-    }
-
-    if (!hasValidChars) {
-      this._setHasValidationErrors(true);
-      this._displayValidationError(input, "Please input a valid email");
-    }
-  }
-
-  _displayValidationError(node, message) {
-    const parent = node.parentElement;
-    const validationElement = this._createValidationErrorElement(message);
-    parent.appendChild(validationElement);
-  }
-
-  _createValidationErrorElement(message) {
-    const element = document.createElement("span");
-    element.classList.add("rsvp-form__validation-error");
-    element.innerText = message;
-    return element;
   }
 }
 

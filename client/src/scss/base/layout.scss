@@ -6,8 +6,12 @@ body {
   position: relative;
   max-width: 2000px;
   margin: 0 auto;
-  padding: 3rem 0;
+  padding: .8rem 0;
   background-color: $white;
+
+  @include tablet-landscape {
+    padding: 3rem 0;
+  }
 }
 
 .container {

@@ -1,15 +1,15 @@
 export const initFormMarkup = `
-<div class="rsvp-form__separation-wrap">
-    <div class="rsvp-form__element">
+<div class="form__separation-wrap">
+    <div class="form__element">
         <input type="text" name="name" placeholder="Your name(s)" required>
     </div>
-    <div class="rsvp-form__element">
+    <div class="form__element">
         <input type="email" name="email" placeholder="Email address" required>
     </div>
 </div>
 
-<div class="rsvp-form__separation-wrap">
-    <div class="rsvp-form__element">
+<div class="form__separation-wrap">
+    <div class="form__element">
         <p>Will you be attending the wedding?</p>
         <div class="rsvp-form__checkers">
             <div class="rsvp-form__checker">
@@ -24,8 +24,8 @@ export const initFormMarkup = `
     </div>
 </div>
 
-<div class="rsvp-form__separation-wrap">
-    <div class="rsvp-form__element">
+<div class="form__separation-wrap">
+    <div class="form__element">
         <p>Will you be spending the night at Ashley Park House?</p>
         <div class="rsvp-form__checkers">
             <div class="rsvp-form__checker">
@@ -40,8 +40,8 @@ export const initFormMarkup = `
     </div>
 </div>
 
-<div class="rsvp-form__separation-wrap">
-    <div class="rsvp-form__element">
+<div class="form__separation-wrap">
+    <div class="form__element">
         <h5>Any other comments</h5>
         <textarea name="comments" rows="3" placeholder="Your message (optional)"></textarea>
     </div>

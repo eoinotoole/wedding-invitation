@@ -5,6 +5,7 @@
   font-size: inherit;
   font-family: inherit;
   text-align: center;
+  padding: 1rem;
   letter-spacing: $body-letter-spacing;
   cursor: pointer;
 
@@ -20,4 +21,13 @@
   padding: 1.3rem 0;
   min-width: 17rem;
   background-color: #ece8d6;
+}
+
+
+.button--rsvp {
+  width: 280px;
+  max-width: 100%;
+  padding: 1rem;
+  background-color: #ece8d6;
+  text-transform: uppercase;
 }

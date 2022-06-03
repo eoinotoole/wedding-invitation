@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   justify-content: flex-end;
-  padding: 2.3rem 1rem;
+  padding: 1.2rem 0;
   background-color: $white;
 
   @include tablet-landscape {
@@ -72,10 +72,6 @@
 .nav-list {
   display: flex;
   flex-direction: column;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
 
   @include tablet-landscape {
     flex-direction: row;

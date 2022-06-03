@@ -19,25 +19,22 @@ class SuccessForm extends RsvpForm {
 
   _getBodyMarkup() {
     const isAttending = this._answers.getIsAttending();
-
-    console.log("HERE", isAttending);
-
     if (!isAttending) return this._getNotAttendingMarkup();
 
     return `
-    <div class="rsvp-form__separation-wrap">
-        <div class="rsvp-form__element">
+    <div class="form__separation-wrap">
+        <div class="form__element">
             <p>We've sent a confirmation email to ${this._answers.getEmail()} 
             and your choices are on their way to Will, Maeve and the Ashley Park team right now!</p>
         </div>
     </div>
-    <div class="rsvp-form__separation-wrap">
-        <div class="rsvp-form__element">
+    <div class="form__separation-wrap">
+        <div class="form__element">
             <p>If you have any additional questions please send them to us via the <a href="/contact">contact form</a>.</p>
         </div>
     </div>
-    <div class="rsvp-form__separation-wrap">
-        <div class="rsvp-form__element">
+    <div class="form__separation-wrap">
+        <div class="form__element">
         <p>We look forward to seeing you on the day!</p>
         <p>Will & Maeve</p>
         </div>
@@ -47,24 +44,24 @@ class SuccessForm extends RsvpForm {
 
   _getNotAttendingMarkup() {
     return `
-    <div class="rsvp-form__separation-wrap">
-        <div class="rsvp-form__element">
+    <div class="form__separation-wrap">
+        <div class="form__element">
             <p>We've sent a confirmation email to ${this._answers.getEmail()} 
             and your response is on the way to Will, Maeve and the Ashley Park team right now.</p>
         </div>
     </div>
-    <div class="rsvp-form__separation-wrap">
-        <div class="rsvp-form__element">
+    <div class="form__separation-wrap">
+        <div class="form__element">
             <p>It's a shame that you won't be joining us on the day but we hope to see you soon!</p>
         </div>
     </div>
-    <div class="rsvp-form__separation-wrap">
-        <div class="rsvp-form__element">
+    <div class="form__separation-wrap">
+        <div class="form__element">
             <p>If you have any additional questions please send them to us via the <a href="/contact">contact form</a>.</p>
         </div>
     </div>
-    <div class="rsvp-form__separation-wrap">
-        <div class="rsvp-form__element">
+    <div class="form__separation-wrap">
+        <div class="form__element">
             <p>All the best</p>
             <p>Will & Maeve</p>
         </div>
@@ -79,12 +76,12 @@ class SuccessForm extends RsvpForm {
             ${this._getHeadingMarkup()}
             ${this._getSubHeadingMarkup()}
            </div>
-            <form class="rsvp-form">
-                <div class="rsvp-form__content">
+            <form class="form form--rsvp">
+                <div class="form__content form__content--rsvp">
                   ${formContent}
                 </div>
-                <div class="rsvp-form-button-container">
-                    <button class="button rsvp-form__button">Close</button>
+                <div class="form__button-container form__button-container--rsvp">
+                    <button class="button button--rsvp form__button">Close</button>
                 </div>
             </form>
         </div>`;

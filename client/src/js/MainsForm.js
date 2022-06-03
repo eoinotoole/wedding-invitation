@@ -29,8 +29,8 @@ class MainsForm extends RsvpForm {
     });
 
     return `
-    <div class="rsvp-form__separation-wrap">
-      <div class="rsvp-form__element">
+    <div class="form__separation-wrap">
+      <div class="form__element">
         <div class="rsvp-form__checkers rsvp-form__checkers--vertical">
           ${mainsMarkup}
         </div>
@@ -40,10 +40,9 @@ class MainsForm extends RsvpForm {
   }
 
   _saveAnswers() {
-    const form = this._getForm();
-    const main = Array.from(form.querySelectorAll("input[name='main']")).find(
-      (input) => input.checked
-    ).value;
+    const main = Array.from(
+      this._form.querySelectorAll("input[name='main']")
+    ).find((input) => input.checked).value;
 
     const currentGuest = this._getCurrentGuest();
     currentGuest.setMain(main);

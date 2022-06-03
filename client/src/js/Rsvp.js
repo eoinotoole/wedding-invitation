@@ -41,6 +41,7 @@ class Rsvp {
       this._currentGuestName,
       this.answers
     );
+    this._form.init();
     this._form.bindClickOnSubmitButton(this.handleActionButtonClick.bind(this));
 
     if (this._stage === 2) {

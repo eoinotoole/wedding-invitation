@@ -39,13 +39,13 @@ const FAQ_LIST = [
     [
         "question" => "When is the RSVP deadline? Do I need to mail my RSVP or can I do it online?",
         "answer" => "We would prefer if you go through our website to RSVP online. You can also contact
-        us through our website if your question has not be answered in any of the
+        us through our website if your question has not been answered in any of the
         information provided."
     ],
     [
-        "question" => "Will the be any vegan/vegetetarian/gluten free/special diet options?",
+        "question" => "Will there be any vegan/vegetetarian/gluten free/special diet options?",
         "answer" => "Through the RSVP process, there is the ability to let us know of any dietary
-        restrictions you may have so we can let our venue know ahead of the time."
+        restrictions you may have so we can let our venue know ahead of time."
     ],
     [
         "question" => "Will transport be provided to and from Ashley Park House?",
@@ -61,7 +61,7 @@ const FAQ_LIST = [
             <li class='faq-answer-list__item'>i. Visit an old castle at Bunratty park, and take a walk around the folk-park (20mins drive from Limerick city)</li>
             <li class='faq-answer-list__item'>ii. Head to the lakeside village of Killaloe (20mins drive from Limerick city)</li>
             <li class='faq-answer-list__item'>iii. Visit the quaint village of Adare (20mins drive from Limerick city)</li>
-            <li class='faq-answer-list__item'>iv. Have brunch at “The Buttery” or “hook and Ladder” in Limerick City</li>
+            <li class='faq-answer-list__item'>iv. Have brunch at “The Buttery” or “Hook and Ladder” in Limerick City</li>
             <li class='faq-answer-list__item'>v. Enjoy an evening meal at “Hamptons Bistro”, “the Cornstore”, “Marco Polo”, “Freddys bistro” “Doh brothers”</li>
             <li class='faq-answer-list__item'>vi. Have a quiet drink in a traditional Irish pub at “Flannerys”, “Myles Breen”</li>
             <li class='faq-answer-list__item'>vii. Enjoy a cocktail at “House bar”, “1 hundred and 1”, “Maggie Choos”, “The Copper Room”</li>

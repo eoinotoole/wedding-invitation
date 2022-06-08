@@ -108,7 +108,7 @@ class InitForm extends RsvpForm {
 
   _getSubHeadingMarkup() {
     return ` <p>Fill in the form to RSVP</p>
-      <p>(Please respond before 07/07/2022)</p>`;
+      <p>(Please respond before 15/09/2022)</p>`;
   }
 
   _getAddMarkup() {

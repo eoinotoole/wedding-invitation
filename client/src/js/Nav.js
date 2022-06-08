@@ -32,7 +32,7 @@ class Nav {
   }
 
   _resetMobileNav() {
-    this._navList.style.maxHeight = "auto";
+    this._navList.style.maxHeight = "";
     this._container.classList.remove("nav--mobile-active");
     this._navButton.classList.remove("nav__button--active");
     this._updateButtonIcon(true);

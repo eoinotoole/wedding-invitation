@@ -64,7 +64,7 @@
                         <ul class="schedule-list">
                             <li class="schedule-list-item">
                                 <div class="schedule-list-item__time">8:30am</div>
-                                <div class="schedule-list-item__activity">Breakfast in the pavillion (until 10:30am)</div>
+                                <div class="schedule-list-item__activity">Breakfast in the pavillion (served until 10:30am)</div>
                             </li>
                             <li class="schedule-list-item">
                                 <div class="schedule-list-item__time">11:00am</div>

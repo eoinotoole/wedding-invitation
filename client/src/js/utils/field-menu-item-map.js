@@ -9,7 +9,7 @@ const FIELD_MENU_ITEM_MAP = {
       },
       {
         name: "cheese",
-        heading: "Baked Goat’s Cheese & Avacado",
+        heading: "Baked Goat’s Cheese & Avocado",
         description:
           "Wrapped in filo pastry & served with basil pesto (1,8,9,11)",
       },

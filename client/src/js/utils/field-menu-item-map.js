@@ -63,9 +63,27 @@ const FIELD_MENU_ITEM_MAP = {
     ],
   },
   children: {
-    entree: [{ name: "", heading: "REQUIRED", description: "REQUIRED" }],
-    main: [{ name: "", heading: "REQUIRED", description: "REQUIRED" }],
-    dessert: [{ name: "", heading: "REQUIRED", description: "REQUIRED" }],
+    entree: [
+      {
+        name: "",
+        heading: "House Salad",
+        description: "With sun dried tomatoes & chickpeas (11)",
+      },
+    ],
+    main: [
+      {
+        name: "",
+        heading: "Roast Vegetable Wellington",
+        description: "With mild sriracha, ginger & tomato sauce (1,3)",
+      },
+    ],
+    dessert: [
+      {
+        name: "",
+        heading: "Vegan Chocolate Cake",
+        description: "With a vegan coconut ice cream (8)",
+      },
+    ],
   },
 };
 

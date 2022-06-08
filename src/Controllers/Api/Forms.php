@@ -2,6 +2,8 @@
 
 namespace App\Controllers\Api;
 
+require_once 'choice-to-dish-map.php';
+
 class Forms extends \App\Controllers\Base
 {
     public function post()
@@ -130,9 +132,9 @@ class Forms extends \App\Controllers\Base
         foreach ($guests as $guest) {
             $name = $guest['name'];
             $menu = $guest['menu'];
-            $entree = $menu === 'standard' ? $guest['entree'] : 'set entree';
-            $main = $menu === 'standard' ? $guest['main'] : 'set main';
-            $dessert = $menu === 'standard' ? $guest['dessert'] : 'set dessert';
+            $entree = $menu === 'standard' ? CHOICE_TO_DISH_MAP['entree'][$menu][$guest['entree']] : CHOICE_TO_DISH_MAP['entree'][$menu];
+            $main = $menu === 'standard' ? CHOICE_TO_DISH_MAP['main'][$menu][$guest['main']] : CHOICE_TO_DISH_MAP['main'][$menu];
+            $dessert = $menu === 'standard' ? CHOICE_TO_DISH_MAP['dessert'][$menu][$guest['dessert']] : CHOICE_TO_DISH_MAP['dessert'][$menu];
             $dietaryRequirements = $guest['dietaryRequirements'];
 
             $markup .= "

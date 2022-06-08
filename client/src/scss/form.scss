@@ -27,13 +27,7 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px white inset !important;
-}
-
-/*Change text in autofill textbox*/
-input:-webkit-autofill,
-input:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0 1000px white inset;
+  -webkit-box-shadow:inset 0 0 0px 9999px white !important;
   -webkit-text-fill-color: inherit !important;
 }
 

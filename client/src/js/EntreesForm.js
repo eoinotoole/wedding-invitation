@@ -6,6 +6,7 @@ class EntreesForm extends RsvpForm {
     return `
     <h4>Entrees</h4>
     <button class="rsvp-form-allergy-button">View allergy guide</button>
+    ${this._getAllergyGuideMarkup()}
     `;
   }
 

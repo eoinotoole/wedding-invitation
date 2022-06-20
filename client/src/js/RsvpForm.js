@@ -11,6 +11,20 @@ class RsvpForm extends Form {
     this._answers = answers;
   }
 
+  _addEventListeners() {
+    super._addEventListeners();
+    const allergyGuideButton = document.querySelector(
+      ".rsvp-form-allergy-button"
+    );
+
+    if (!allergyGuideButton) return;
+
+    allergyGuideButton.addEventListener(
+      "click",
+      this._handleAllergyGuideButtonClick
+    );
+  }
+
   init() {
     this._container = document.querySelector(".rsvp-container");
     this.render();
@@ -36,6 +50,19 @@ class RsvpForm extends Form {
       this._handleActionButtonClick();
       handler();
     });
+  }
+
+  _handleAllergyGuideButtonClick() {
+    const allergyGuide = document.querySelector(".allergy-guide");
+    const isAllergyGuideActive = allergyGuide.classList.contains(
+      "allergy-guide--active"
+    );
+
+    if (isAllergyGuideActive) {
+      allergyGuide.classList.remove("allergy-guide--active");
+      return;
+    }
+    allergyGuide.classList.add("allergy-guide--active");
   }
 
   _handleActionButtonClick() {
@@ -72,6 +99,15 @@ class RsvpForm extends Form {
 
   _getSubHeadingMarkup() {
     return "";
+  }
+
+  _getAllergyGuideMarkup() {
+    return `
+      <div class="allergy-guide">
+        <p>Each dish lists numbers that represent included allergens:</p>
+        <p>Gluten = 1, Crustaceans = 2, Eggs = 3, Fish = 4, Molluscs = 5, Soybeans = 6, Peanuts = 7, Nuts = 8, Milk/dairy = 9, Celery = 10, Mustard = 11, Sesame seeds = 12, Sulphites = 13, Lupin = 14</p>
+      </div>
+    `;
   }
 
   _validateTextInput(input) {

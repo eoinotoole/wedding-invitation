@@ -224,3 +224,12 @@
   color: #89aea6;
   cursor: pointer;
 }
+
+.allergy-guide {
+  display: none;
+  margin-top: 24px;
+}
+
+.allergy-guide--active {
+  display: block;
+}

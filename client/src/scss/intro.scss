@@ -1,18 +1,18 @@
 .intro {
   position: relative;
-  margin: 1rem 0 5rem;
   text-align: center;
   background-color: $white;
-
-  @include tablet-landscape {
-    margin: 1rem 0 6rem;
-  }
 }
 
 .intro__content {
+  padding: 10rem 0 8rem;
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 2.4px;
+
+  @include tablet-portrait {
+    padding: 11rem 0 8rem;
+  }
 
   @include tablet-landscape {
     font-size: 1.2rem;
@@ -63,36 +63,43 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: 250px;
-  max-width: 460px;
+  z-index: 1;
+  width: 90%;
+  max-width: 300px;
 
   @include tablet-portrait {
-    width: 40%;
+    max-width: 540px;
+   }
+
+  @include tablet-landscape {
+   max-width: 700px;
   }
 
   @include large-desktop {
-    max-width: 520px;
+    max-width: 800px;
   }
 }
 
 .intro__leaves-2 {
   position: absolute;
-  bottom: -7%;
+  bottom: -120px;
   left: 0;
-  width: 190px;
-  max-width: 360px;
+  width: 90%;
+  max-width: 210px;
 
   @include tablet-portrait {
-    width: 33%;
+    max-width: 340px;
+    bottom: -180px;
   }
 
   @include tablet-landscape {
-    width: 35%;
-    bottom: -10%;
+    max-width: 390px;
+    bottom: -200px;
   }
 
   @include large-desktop {
-    max-width: 420px;
+    max-width: 520px;
+    bottom: -270px;
   }
 }
 

@@ -6,16 +6,11 @@ body {
   position: relative;
   max-width: 2000px;
   margin: 0 auto;
-  padding: .8rem 0;
   background-color: $white;
-
-  @include tablet-landscape {
-    padding: 3rem 0 4rem;
-  }
 }
 
-.page--home {
-  padding-bottom: 0;
+.article-page {
+  padding: 9rem 0 4rem;
 }
 
 .container {

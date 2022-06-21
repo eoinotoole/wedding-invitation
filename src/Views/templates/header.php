@@ -16,5 +16,6 @@
 </head>
 
 <body>
-    <?php include_once __DIR__ . '/nav.php'; ?>
-    <div class="modal-container"></div>
+    <div class="page">
+        <?php include_once __DIR__ . '/nav.php'; ?>
+        <div class="modal-container"></div>

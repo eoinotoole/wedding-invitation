@@ -9,7 +9,7 @@ module.exports = {
     path: path.resolve(path.join(__dirname, "../"), "static"),
     filename: "bundle.js",
   },
-  plugins: [new MiniCssExtractPlugin()],
+  plugins: [new MiniCssExtractPlugin({ filename: "main.1.0.css" })],
   module: {
     rules: [
       {

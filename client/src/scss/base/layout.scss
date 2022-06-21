@@ -10,7 +10,10 @@ body {
 }
 
 .article-page {
-  padding: 9rem 0 4rem;
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
+  padding: 10rem 0 4rem;
 }
 
 .container {

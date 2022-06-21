@@ -1,7 +1,6 @@
 <?php include_once __DIR__ . '/header.php' ?>
 <main>
     <section class="intro">
-        <img class="intro__leaves" src="/static/images/new-leaves1.png" alt="Hanging leaves illustration" />
         <img class="intro__leaves-2" src="/static/images/new-leaves3.png" alt="Hanging leaves illustration" />
         <div class="container">
             <div class="intro__content">

@@ -43,7 +43,7 @@
                         </li>
                         <li class="schedule-list-item">
                             <div class="schedule-list-item__time">3:40pm</div>
-                            <div class="schedule-list-item__activity">Check-in (for guests staying at AHP) Drinks and Canapes</div>
+                            <div class="schedule-list-item__activity">Check-in (for guests staying at APH) Drinks and Canapes</div>
                         </li>
                         <li class="schedule-list-item">
                             <div class="schedule-list-item__time">6:00pm</div>

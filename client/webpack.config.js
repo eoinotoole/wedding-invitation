@@ -7,11 +7,21 @@ module.exports = {
   devtool: "cheap-source-map",
   output: {
     path: path.resolve(path.join(__dirname, "../"), "static"),
-    filename: "bundle.js",
+    filename: "bundle.1.0.js",
   },
   plugins: [new MiniCssExtractPlugin({ filename: "main.1.0.css" })],
   module: {
     rules: [
+      {
+        test: /\.m?js$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"],
+          },
+        },
+      },
       {
         test: /\.scss$/i,
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
@@ -32,4 +42,5 @@ module.exports = {
       },
     ],
   },
+  target: ["web", "es5"],
 };
